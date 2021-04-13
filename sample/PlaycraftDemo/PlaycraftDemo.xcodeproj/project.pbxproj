@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B0D196426243C3B009AA553 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D196326243C3B009AA553 /* AppDelegate.swift */; };
+		6B0D196626243C3B009AA553 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D196526243C3B009AA553 /* SceneDelegate.swift */; };
+		6B0D196826243C3B009AA553 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D196726243C3B009AA553 /* ViewController.swift */; };
+		6B0D196B26243C3B009AA553 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D196926243C3B009AA553 /* Main.storyboard */; };
+		6B0D196D26243C3B009AA553 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D196C26243C3B009AA553 /* Assets.xcassets */; };
+		6B0D197026243C3B009AA553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D196E26243C3B009AA553 /* LaunchScreen.storyboard */; };
+		6B0D198F26243C80009AA553 /* KKSLocalization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198026243C66009AA553 /* KKSLocalization.xcframework */; };
+		6B0D199026243C80009AA553 /* KKSLocalization.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198026243C66009AA553 /* KKSLocalization.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B0D199126243C81009AA553 /* KKSNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198226243C67009AA553 /* KKSNetwork.xcframework */; };
+		6B0D199226243C81009AA553 /* KKSNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198226243C67009AA553 /* KKSNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B0D199526243C83009AA553 /* SDWebImage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D197E26243C64009AA553 /* SDWebImage.xcframework */; };
+		6B0D199626243C83009AA553 /* SDWebImage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D197E26243C64009AA553 /* SDWebImage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C654C50E2625858E00FB57A6 /* KKSPaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C654C50C2625858900FB57A6 /* KKSPaaS.framework */; };
+		C654C50F2625858E00FB57A6 /* KKSPaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C654C50C2625858900FB57A6 /* KKSPaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6B0D198C26243C7D009AA553 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6B0D199626243C83009AA553 /* SDWebImage.xcframework in Embed Frameworks */,
+				6B0D199226243C81009AA553 /* KKSNetwork.xcframework in Embed Frameworks */,
+				6B0D199026243C80009AA553 /* KKSLocalization.xcframework in Embed Frameworks */,
+				C654C50F2625858E00FB57A6 /* KKSPaaS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6B0D196026243C3B009AA553 /* PlaycraftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaycraftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0D196326243C3B009AA553 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6B0D196526243C3B009AA553 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6B0D196726243C3B009AA553 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B0D196A26243C3B009AA553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B0D196C26243C3B009AA553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B0D196F26243C3B009AA553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6B0D197126243C3B009AA553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B0D197E26243C64009AA553 /* SDWebImage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SDWebImage.xcframework; sourceTree = "<group>"; };
+		6B0D198026243C66009AA553 /* KKSLocalization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KKSLocalization.xcframework; sourceTree = "<group>"; };
+		6B0D198226243C67009AA553 /* KKSNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KKSNetwork.xcframework; sourceTree = "<group>"; };
+		C654C50C2625858900FB57A6 /* KKSPaaS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KKSPaaS.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B0D195D26243C3B009AA553 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0D199526243C83009AA553 /* SDWebImage.xcframework in Frameworks */,
+				6B0D199126243C81009AA553 /* KKSNetwork.xcframework in Frameworks */,
+				6B0D198F26243C80009AA553 /* KKSLocalization.xcframework in Frameworks */,
+				C654C50E2625858E00FB57A6 /* KKSPaaS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B0D195726243C3B009AA553 = {
+			isa = PBXGroup;
+			children = (
+				6B0D196226243C3B009AA553 /* PlaycraftDemo */,
+				6B0D196126243C3B009AA553 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6B0D196126243C3B009AA553 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B0D196026243C3B009AA553 /* PlaycraftDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B0D196226243C3B009AA553 /* PlaycraftDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B0D197C26243C55009AA553 /* Frameworks */,
+				6B0D196326243C3B009AA553 /* AppDelegate.swift */,
+				6B0D196526243C3B009AA553 /* SceneDelegate.swift */,
+				6B0D196726243C3B009AA553 /* ViewController.swift */,
+				6B0D196C26243C3B009AA553 /* Assets.xcassets */,
+				6B0D196E26243C3B009AA553 /* LaunchScreen.storyboard */,
+				6B0D196926243C3B009AA553 /* Main.storyboard */,
+				6B0D197126243C3B009AA553 /* Info.plist */,
+			);
+			path = PlaycraftDemo;
+			sourceTree = "<group>";
+		};
+		6B0D197C26243C55009AA553 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C654C50C2625858900FB57A6 /* KKSPaaS.framework */,
+				6B0D198026243C66009AA553 /* KKSLocalization.xcframework */,
+				6B0D198226243C67009AA553 /* KKSNetwork.xcframework */,
+				6B0D197E26243C64009AA553 /* SDWebImage.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B0D195F26243C3B009AA553 /* PlaycraftDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B0D197426243C3B009AA553 /* Build configuration list for PBXNativeTarget "PlaycraftDemo" */;
+			buildPhases = (
+				6B0D195C26243C3B009AA553 /* Sources */,
+				6B0D195D26243C3B009AA553 /* Frameworks */,
+				6B0D195E26243C3B009AA553 /* Resources */,
+				6B0D198C26243C7D009AA553 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaycraftDemo;
+			productName = PlaycraftDemo;
+			productReference = 6B0D196026243C3B009AA553 /* PlaycraftDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B0D195826243C3B009AA553 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					6B0D195F26243C3B009AA553 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 6B0D195B26243C3B009AA553 /* Build configuration list for PBXProject "PlaycraftDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B0D195726243C3B009AA553;
+			productRefGroup = 6B0D196126243C3B009AA553 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B0D195F26243C3B009AA553 /* PlaycraftDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B0D195E26243C3B009AA553 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0D197026243C3B009AA553 /* LaunchScreen.storyboard in Resources */,
+				6B0D196D26243C3B009AA553 /* Assets.xcassets in Resources */,
+				6B0D196B26243C3B009AA553 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B0D195C26243C3B009AA553 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0D196826243C3B009AA553 /* ViewController.swift in Sources */,
+				6B0D196426243C3B009AA553 /* AppDelegate.swift in Sources */,
+				6B0D196626243C3B009AA553 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6B0D196926243C3B009AA553 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B0D196A26243C3B009AA553 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6B0D196E26243C3B009AA553 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B0D196F26243C3B009AA553 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B0D197226243C3B009AA553 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6B0D197326243C3B009AA553 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6B0D197526243C3B009AA553 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 72M2493FFK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlaycraftDemo",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/Frameworks",
+				);
+				INFOPLIST_FILE = PlaycraftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KKStream.PlaycraftDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		6B0D197626243C3B009AA553 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 72M2493FFK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlaycraftDemo",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/New\\ Group",
+					"$(PROJECT_DIR)/PlaycraftDemo/Frameworks",
+				);
+				INFOPLIST_FILE = PlaycraftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KKStream.PlaycraftDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B0D195B26243C3B009AA553 /* Build configuration list for PBXProject "PlaycraftDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B0D197226243C3B009AA553 /* Debug */,
+				6B0D197326243C3B009AA553 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B0D197426243C3B009AA553 /* Build configuration list for PBXNativeTarget "PlaycraftDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B0D197526243C3B009AA553 /* Debug */,
+				6B0D197626243C3B009AA553 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B0D195826243C3B009AA553 /* Project object */;
+}
