@@ -1,33 +1,27 @@
-# playcraft-ios-sdk
+# Playcraft
 
-Playcraft is a Swift library for streaming video playback.
-
-
-## Installation
-
-Drag all the files in the folder *sdk* in to your project bundle. Including 4 files as below:
-1. KKSLocalization.xcframework
-2. KKSNetwork.xcframework
-3. KKSPaaS.framework
-4. SDWebImage.xcframework
+*Playcraft* is a Swift library for streaming video playback.
 
 
-## Usage
+## Getting Started
 
-Present `PlayerViewController` and conform `PlayerViewControllerDelegate` for handling release the instance.
+1. Download repository.
+2. Drag all the files under folder *sdk* into your project's bundle.
+3. Initialize and present `PlayerViewController`.
+4. Conform `PlayerViewControllerDelegate` and release instance of `PlayerViewController` manually in `func playerViewControllerDidDismiss(_:)`.
 
 ```swift
 import KKSPaaS
 
 // prepare to present `PlayerViewController`
 let context = AppLayerContext(
-    contentId: "1",
-    contentType: .videos,
-    host: "https://mock-playback.tfc.kkv-test.com",
-    access: "timchen",
-    custom: ["X-Device-Type": "ios"],
-    settingConfig: SettingConfig(resolution: nil, sourceType: nil)
+    contentId: { VIDEO_CONTENT_ID },
+    contentType: { VIDEO_CONTENT_TYPE },
+    host: { VIDEO_HOST_SERVER_URL_PATH },
+    access: { ACCESS_TOKEN },
+    settingConfig: { PLAYBACK_SETTING_CONFIGURATION }
 )
+
 playerVC = PlayerViewController(with: context)
 playerVC.delegate = self
 let navController = UINavigationController(rootViewController: playerVC)
@@ -35,26 +29,11 @@ navController.modalPresentationStyle = .fullScreen
 present(navController, animated: true, completion: nil)
 ```
 
-Release instance of `PlayerViewController` while delegate function is invoked.
+More description about parameters:
 
-```swift
-extension ViewController: PlayerViewControllerDelegate {
-
-    func playerViewController(_ controller: PlayerViewController?, didChange state: PlaybackState) { }
-    func playerViewController(_ controller: PlayerViewController?, didChangeItem id: String, for type: ItemType) { }
-    func playerViewController(_ controller: PlayerViewController?, didChange resolution: Int?, for reason: SettingChangedReason) { }
-    func playerViewController(_ controller: PlayerViewController?, didChange source: String, for reason: SettingChangedReason) { }
-    func playerViewController(_ controller: PlayerViewController?, didFinishLiveForContext context: AppLayerContext) -> Bool { false }
-    func playerViewControllerDidDismiss(_ controller: PlayerViewController?) {
-        // User tapped the close button on `PlayerViewController`, and you have to release the instance of it manually.
-        playerVC = nil
-    }
-
-}
-```
-
-
-## Reporting
-
-Please open an issue to discuss what problem you would face to.
+- `contentId`: The id is unique and it is used to fetch content data and related resources
+- `contentType`: An enum value that includes Video, Live and Offline
+- `host`: The host url, the player will auto verify that the url is available or not.
+- `accessToken`: Authorization token
+- `settingConfig`: Use specific the resolution and source type to playback
 
