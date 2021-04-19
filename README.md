@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-1. Download repository.
+1. Download this repository.
 2. Drag all the files under folder *sdk* into your project's bundle.
 3. Initialize and present `PlayerViewController`.
 4. Conform `PlayerViewControllerDelegate` and release instance of `PlayerViewController` manually in `func playerViewControllerDidDismiss(_:)`.
