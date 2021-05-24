@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 effective-4.1.50 (swiftlang-1200.0.45 clang-1200.0.32.28)
-// swift-module-flags: -target arm64-apple-ios10-simulator -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name KKSNetwork
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-module-flags: -target arm64-apple-ios10-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name KKSNetwork
 import Foundation
 @_exported import KKSNetwork
 import Swift
@@ -25,15 +25,15 @@ public enum KKSJSONError : Swift.Error {
   case parsingError
   case serializationError
   public static func == (a: KKSNetwork.KKSJSONError, b: KKSNetwork.KKSJSONError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public enum KKSNetworkError : Swift.String, Swift.Error {
   case dataNotFound
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -134,10 +134,10 @@ public class Reachability {
       get
     }
     public static func == (a: KKSNetwork.Reachability.NetworkStatus, b: KKSNetwork.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Connection : Swift.CustomStringConvertible {
     case none, wifi, cellular
@@ -145,10 +145,10 @@ public class Reachability {
       get
     }
     public static func == (a: KKSNetwork.Reachability.Connection, b: KKSNetwork.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public var whenReachable: KKSNetwork.Reachability.NetworkReachable?
   public var whenUnreachable: KKSNetwork.Reachability.NetworkUnreachable?
@@ -205,11 +205,11 @@ public enum KKSNetworkMethod : Swift.String {
   case PUT
   case PATCH
   case DELETE
+  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
-  public init?(rawValue: Swift.String)
 }
 extension KKSNetwork.KKSJSONError : Swift.Equatable {}
 extension KKSNetwork.KKSJSONError : Swift.Hashable {}
