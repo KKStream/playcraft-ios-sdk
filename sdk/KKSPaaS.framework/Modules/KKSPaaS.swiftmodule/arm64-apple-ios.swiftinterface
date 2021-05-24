@@ -498,8 +498,14 @@ public class Avail : Swift.Decodable {
   final public let ads: [KKSPaaS.ADBreak]
   final public let durationInSeconds: Swift.Double
   final public let startTimeInSeconds: Swift.Double
+  public var endTimeInSeconds: Swift.Double {
+    get
+  }
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+}
+extension Avail : Swift.Equatable {
+  public static func == (lhs: KKSPaaS.Avail, rhs: KKSPaaS.Avail) -> Swift.Bool
 }
 public class ADBreak : Swift.Decodable {
   final public let durationInSeconds: Swift.Double
@@ -507,6 +513,9 @@ public class ADBreak : Swift.Decodable {
   public var skipOffset: Swift.String?
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+}
+extension ADBreak : Swift.Equatable {
+  public static func == (lhs: KKSPaaS.ADBreak, rhs: KKSPaaS.ADBreak) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class Logger {
   public static var shared: KKSPaaS.Logger
@@ -633,7 +642,7 @@ extension KKSAVPlayerDelegate {
   public var duration: Foundation.TimeInterval {
     get
   }
-  public var currentTime: Swift.Double {
+  public var currentTime: Foundation.TimeInterval {
     get
   }
   @objc override required dynamic public init()
@@ -648,6 +657,16 @@ extension KKSAVPlayerDelegate {
 }
 extension KKSAVPlayer : AVFoundation.AVAssetResourceLoaderDelegate {
   @objc dynamic public func resourceLoader(_ resourceLoader: AVFoundation.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVFoundation.AVAssetResourceLoadingRequest) -> Swift.Bool
+}
+extension KKSAVPlayer {
+  public var selectedSubtitle: AVFoundation.AVMediaSelectionOption? {
+    get
+  }
+  public var selectedAudioTrack: AVFoundation.AVMediaSelectionOption? {
+    get
+  }
+  public func deselectSubtitles()
+  public func selectMedia(option: AVFoundation.AVMediaSelectionOption)
 }
 public struct KKSAssetDownloader {
   public init(userId: Swift.String)
@@ -791,6 +810,20 @@ extension KKSPlayerItem {
     get
   }
   public var errorLogEventDescription: Swift.String? {
+    get
+  }
+}
+extension AVPlayerItem {
+  public var selectedSubtitle: AVFoundation.AVMediaSelectionOption? {
+    get
+  }
+  public var selectedAudioTrack: AVFoundation.AVMediaSelectionOption? {
+    get
+  }
+  public var subtitles: [AVFoundation.AVMediaSelectionOption] {
+    get
+  }
+  public var audioTracks: [AVFoundation.AVMediaSelectionOption] {
     get
   }
 }
@@ -1059,7 +1092,7 @@ extension PlayerViewController : KKSPaaS.PlaybackHandlerDelegate {
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didChange title: Swift.String?, subtitle: Swift.String?, duration: Swift.String?)
   public func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
+  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   public func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public struct SetComparer {
@@ -1190,7 +1223,7 @@ public protocol PlaybackHandlerDelegate : AnyObject {
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, shouldChangeBackground imageUrl: Swift.String?)
   func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
+  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public enum PlaybackBufferingCase {

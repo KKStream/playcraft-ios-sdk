@@ -213,6 +213,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+
 /// Asset keep the downloaded required information such as AVURLAsset & Bitrate etc.
 /// Give AssetResourceLoaderErrorDelegate which help caller can monitor the error type
 /// The core of download request occur in Asset+AVAssetResourceLoaderDelegate.swift
@@ -370,6 +371,7 @@ SWIFT_CLASS("_TtC7KKSPaaS11KKSAVPlayer")
 @interface KKSAVPlayer (SWIFT_EXTENSION(KKSPaaS)) <AVAssetResourceLoaderDelegate>
 - (BOOL)resourceLoader:(AVAssetResourceLoader * _Nonnull)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest * _Nonnull)loadingRequest SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 
