@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name KKSPaaS
 import AVFoundation
 import CoreData
@@ -18,8 +18,8 @@ public enum ItemType : Swift.String {
   case videos
   case lives
   case offline
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -55,10 +55,10 @@ public enum PlaybackMode {
   case airplay
   case advertising
   public static func == (a: KKSPaaS.PlaybackMode, b: KKSPaaS.PlaybackMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public enum PlaybackState {
   case `init`
@@ -67,10 +67,10 @@ public enum PlaybackState {
   case pause
   case end
   public static func == (a: KKSPaaS.PlaybackState, b: KKSPaaS.PlaybackState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public struct KKSLicense : Swift.Decodable {
   public var id: Swift.String
@@ -101,8 +101,8 @@ public enum ContentError : Swift.String, Swift.Error {
   case badRequest
   case isNotPlayable
   case resolutionNotFound
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -111,8 +111,8 @@ public enum DownloadError : Swift.String, Swift.Error {
   case wifyOnly
   case missingApplicationCertificate
   case noCKCReturnedByKSM
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -146,10 +146,10 @@ public enum APIClientError : Swift.Error, Swift.Equatable {
     case userAuthenticationRequired
     case zeroByteResource
     public static func == (a: KKSPaaS.APIClientError.NetworkError, b: KKSPaaS.APIClientError.NetworkError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum APIError {
     case none
@@ -165,10 +165,10 @@ public enum APIClientError : Swift.Error, Swift.Equatable {
     case underDevelopment
     case underMaintanance
     public static func == (a: KKSPaaS.APIClientError.APIError, b: KKSPaaS.APIClientError.APIError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   case none
   case httpURLResponseFailed
@@ -456,8 +456,8 @@ public struct Video : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
 @_inheritsConvenienceInitializers @objc(FairPlayEntity) public class FairPlayEntity : CoreData.NSManagedObject {
-  @objc deinit
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
 }
 public struct PlaybackInfo : Swift.Decodable {
   public let sources: [KKSPaaS.PlaybackSource]
@@ -498,14 +498,8 @@ public class Avail : Swift.Decodable {
   final public let ads: [KKSPaaS.ADBreak]
   final public let durationInSeconds: Swift.Double
   final public let startTimeInSeconds: Swift.Double
-  public var endTimeInSeconds: Swift.Double {
-    get
-  }
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
-}
-extension Avail : Swift.Equatable {
-  public static func == (lhs: KKSPaaS.Avail, rhs: KKSPaaS.Avail) -> Swift.Bool
 }
 public class ADBreak : Swift.Decodable {
   final public let durationInSeconds: Swift.Double
@@ -513,9 +507,6 @@ public class ADBreak : Swift.Decodable {
   public var skipOffset: Swift.String?
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
-}
-extension ADBreak : Swift.Equatable {
-  public static func == (lhs: KKSPaaS.ADBreak, rhs: KKSPaaS.ADBreak) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class Logger {
   public static var shared: KKSPaaS.Logger
@@ -535,8 +526,8 @@ public enum BarItemType : Swift.String {
   case cast
   case setting
   case custom
-  public typealias RawValue = Swift.String
   public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
@@ -556,10 +547,10 @@ public enum KKSCoreDataError : Swift.Error {
   case existing
   case empty
   public static func == (a: KKSPaaS.KKSCoreDataError, b: KKSPaaS.KKSCoreDataError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 extension DownloadInfoEntity {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<KKSPaaS.DownloadInfoEntity>
@@ -642,7 +633,7 @@ extension KKSAVPlayerDelegate {
   public var duration: Foundation.TimeInterval {
     get
   }
-  public var currentTime: Foundation.TimeInterval {
+  public var currentTime: Swift.Double {
     get
   }
   @objc override required dynamic public init()
@@ -684,10 +675,10 @@ public enum ContentKeyContextMode {
   case playcraft
   case upfront
   public static func == (a: KKSPaaS.ContentKeyContextMode, b: KKSPaaS.ContentKeyContextMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public protocol PlayerViewControllerDelegate : AnyObject {
   func playerViewController(_ controller: KKSPaaS.PlayerViewController?, didReceiveAPI error: KKSPaaS.PAASError)
@@ -716,15 +707,15 @@ public enum SettingChangedReason : Swift.Int {
   case none
   case auto
   case manual
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
 }
 @_inheritsConvenienceInitializers @objc(DownloadInfoEntity) public class DownloadInfoEntity : CoreData.NSManagedObject {
-  @objc deinit
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class KKDiskStatus {
   public static var totalDiskSpace: Swift.String {
@@ -791,10 +782,10 @@ public enum PlayerItemState {
   case errorLog
   case accessLog
   public static func == (a: KKSPaaS.PlayerItemState, b: KKSPaaS.PlayerItemState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KKSPlayerItem : AVFoundation.AVPlayerItem {
   public var didPlayToEnd: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
@@ -861,9 +852,9 @@ public struct Series : Swift.Decodable {
   @objc override dynamic public init(rootViewController: UIKit.UIViewController)
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc deinit
   @available(iOS 5.0, *)
   @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @objc deinit
 }
 public protocol RecommendViewDelegate : AnyObject {
   func addedToAnchorView(_ recommendView: KKSPaaS.RecommendView)
@@ -954,10 +945,10 @@ extension KKSDownloader {
   @objc override dynamic public func viewDidLoad()
   @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
   @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
-  @objc deinit
   @objc override dynamic public init(style: UIKit.UITableView.Style)
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
 }
 public struct KKSAssetURLMaker {
   public init()
@@ -988,8 +979,8 @@ public struct KKSContentKeyContextModel {
   final public let name: Swift.String
   public var contextModel: KKSPaaS.KKSContentKeyContextModel?
   public var fairPlay: KKSPaaS.FairPlay
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 extension Asset {
   public enum DownloadState : Swift.String {
@@ -997,8 +988,8 @@ extension Asset {
     case downloading
     case pause
     case downloaded
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -1092,7 +1083,7 @@ extension PlayerViewController : KKSPaaS.PlaybackHandlerDelegate {
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didChange title: Swift.String?, subtitle: Swift.String?, duration: Swift.String?)
   public func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
+  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
   public func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public struct SetComparer {
@@ -1107,8 +1098,8 @@ public enum DownloadState : Swift.Int16 {
   public var descriptor: Swift.String {
     get
   }
-  public typealias RawValue = Swift.Int16
   public init?(rawValue: Swift.Int16)
+  public typealias RawValue = Swift.Int16
   public var rawValue: Swift.Int16 {
     get
   }
@@ -1174,8 +1165,8 @@ extension DownloadStream {
     case willRenewLicense
     case didRenewLicense
     case failure
-    public typealias RawValue = Swift.String
     public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
     }
@@ -1223,21 +1214,21 @@ public protocol PlaybackHandlerDelegate : AnyObject {
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, shouldChangeBackground imageUrl: Swift.String?)
   func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
+  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
   func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public enum PlaybackBufferingCase {
   case buffering
   case keepup
   public static func == (a: KKSPaaS.PlaybackBufferingCase, b: KKSPaaS.PlaybackBufferingCase) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @_inheritsConvenienceInitializers @objc(DownloadItemEntity) public class DownloadItemEntity : CoreData.NSManagedObject {
-  @objc deinit
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
 }
 public struct DRMDataMaker {
   public static func makeCKCRequest(with url: Foundation.URL, httpMethod: Swift.String?, httpBody: Foundation.Data?, data: Swift.String?, header: Swift.String?) -> Foundation.URLRequest
@@ -1285,8 +1276,8 @@ public struct MediaItem : KKSPaaS.AppInfoProtocol {
 public enum ADBreakEvent : Swift.Int {
   case ADBreakStarted
   case ADBreakEnded
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
