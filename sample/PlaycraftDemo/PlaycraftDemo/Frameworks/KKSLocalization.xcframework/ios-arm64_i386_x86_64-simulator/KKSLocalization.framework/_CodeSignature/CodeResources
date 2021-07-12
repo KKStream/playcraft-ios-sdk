@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NCnyo3iGDGnmG7H3EafLv20k/wk=
+		rumt9vZDMPkyDagk7H1qZgXOgb4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		NCnyo3iGDGnmG7H3EafLv20k/wk=
+		rumt9vZDMPkyDagk7H1qZgXOgb4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<data>
-		MXSNRhorIQiNIU2dMJPacuxuQ+Q=
+		fjfGC8TbDj1DrnDXdhIuAMM2s9s=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftmodule</key>
 		<data>
-		MXSNRhorIQiNIU2dMJPacuxuQ+Q=
+		fjfGC8TbDj1DrnDXdhIuAMM2s9s=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		UeumBVyrQF2nU5JLBQxsuSEPKUI=
+		Xdl57KI+OJJkzOqFP7/w9AXR6+c=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -110,7 +110,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		UeumBVyrQF2nU5JLBQxsuSEPKUI=
+		Xdl57KI+OJJkzOqFP7/w9AXR6+c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -120,7 +120,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xlDHY4vPnl3g/pKVUhNQLFwOkIY=
+			LkaDatIyydGWvZupKYLOVGlV6nQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Kg8Al6XQn2JH3UEkEtRhUhvqQL8=
+			IB8RM5yEqm2WAsGbDZQKxgmJAMo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -138,7 +138,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			78eW96TlvbHkofW9ZFckjmJYQaE=
+			fqrVD0hqPinABbAT5uBkgWd3nAA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -260,11 +260,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NCnyo3iGDGnmG7H3EafLv20k/wk=
+			rumt9vZDMPkyDagk7H1qZgXOgb4=
 			</data>
 			<key>hash2</key>
 			<data>
-			BFJXNOJ7ZbH7gYEzpt2I//StSw2d3GcvxHSxYZCIg0M=
+			nTIiHDn8In5uZMhrTvA7HsLs0eeUHnoyvA+5PF+ASfg=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftdoc</key>
@@ -293,11 +293,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NCnyo3iGDGnmG7H3EafLv20k/wk=
+			rumt9vZDMPkyDagk7H1qZgXOgb4=
 			</data>
 			<key>hash2</key>
 			<data>
-			BFJXNOJ7ZbH7gYEzpt2I//StSw2d3GcvxHSxYZCIg0M=
+			nTIiHDn8In5uZMhrTvA7HsLs0eeUHnoyvA+5PF+ASfg=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
@@ -326,11 +326,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MXSNRhorIQiNIU2dMJPacuxuQ+Q=
+			fjfGC8TbDj1DrnDXdhIuAMM2s9s=
 			</data>
 			<key>hash2</key>
 			<data>
-			gSAf4+ZQTRbOvo3v1GbOzbLvlLQKdyg4v7Aw3nLNero=
+			2rMel6kM8+fFha14Q0g2b2pf+WxZHuzKBiokLx05ofc=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftdoc</key>
@@ -359,11 +359,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MXSNRhorIQiNIU2dMJPacuxuQ+Q=
+			fjfGC8TbDj1DrnDXdhIuAMM2s9s=
 			</data>
 			<key>hash2</key>
 			<data>
-			gSAf4+ZQTRbOvo3v1GbOzbLvlLQKdyg4v7Aw3nLNero=
+			2rMel6kM8+fFha14Q0g2b2pf+WxZHuzKBiokLx05ofc=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -392,11 +392,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UeumBVyrQF2nU5JLBQxsuSEPKUI=
+			Xdl57KI+OJJkzOqFP7/w9AXR6+c=
 			</data>
 			<key>hash2</key>
 			<data>
-			nc4eBUda6UcJ/pNGxol4fwYJuP7J3d2ikhK6XXASFOg=
+			3wVHj/1PeXIizwG2mgP6S8JmdJveBGE71jk4AKib6Hw=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftdoc</key>
@@ -425,11 +425,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UeumBVyrQF2nU5JLBQxsuSEPKUI=
+			Xdl57KI+OJJkzOqFP7/w9AXR6+c=
 			</data>
 			<key>hash2</key>
 			<data>
-			nc4eBUda6UcJ/pNGxol4fwYJuP7J3d2ikhK6XXASFOg=
+			3wVHj/1PeXIizwG2mgP6S8JmdJveBGE71jk4AKib6Hw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -447,11 +447,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xlDHY4vPnl3g/pKVUhNQLFwOkIY=
+			LkaDatIyydGWvZupKYLOVGlV6nQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			C9KJt3GYUmO8gRrsaiI0lQhdi6DiLp76BmZMMptJ4fU=
+			psr84plcyIEUWyXkCw+3DBVgVDhA5QOrkvmExzDp+iM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -460,11 +460,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Kg8Al6XQn2JH3UEkEtRhUhvqQL8=
+			IB8RM5yEqm2WAsGbDZQKxgmJAMo=
 			</data>
 			<key>hash2</key>
 			<data>
-			ARmb9zCu7oAm0WguEwqIDwudFQ7unNiKAy72LU0sBtM=
+			xse9ggzE7Oq93gq9+m8IEi3CF/uuSf6BaQo68xTHvjo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -473,11 +473,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			78eW96TlvbHkofW9ZFckjmJYQaE=
+			fqrVD0hqPinABbAT5uBkgWd3nAA=
 			</data>
 			<key>hash2</key>
 			<data>
-			hyg92U9LuWrl1UfA8RvQ7jpSAdCTLN/gGVi0bh0PpqM=
+			UoMbgyHbEEiQIO3A8seqyBI5mdwJmZY+TgeDKCdQ1rU=
 			</data>
 			<key>optional</key>
 			<true/>
