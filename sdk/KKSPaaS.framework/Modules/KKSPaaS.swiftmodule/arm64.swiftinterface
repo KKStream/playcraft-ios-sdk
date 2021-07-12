@@ -11,7 +11,6 @@ import KKSLocalization
 import KKSNetwork
 @_exported import KKSPaaS
 import MediaPlayer
-import SDWebImage
 import Swift
 import UIKit
 public enum ItemType : Swift.String {
@@ -488,18 +487,24 @@ public class Manifest : Swift.Decodable {
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
 }
-public struct Resolution : Swift.Decodable {
-  public var displayedText: Swift.String? {
-    get
-  }
+public struct Resolution : Swift.Decodable, Swift.Equatable {
+  public let height: Swift.Int
+  public let displayedText: Swift.String?
+  public static func == (a: KKSPaaS.Resolution, b: KKSPaaS.Resolution) -> Swift.Bool
   public init(from decoder: Swift.Decoder) throws
 }
 public class Avail : Swift.Decodable {
   final public let ads: [KKSPaaS.ADBreak]
   final public let durationInSeconds: Swift.Double
   final public let startTimeInSeconds: Swift.Double
+  public var endTimeInSeconds: Swift.Double {
+    get
+  }
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+}
+extension Avail : Swift.Equatable {
+  public static func == (lhs: KKSPaaS.Avail, rhs: KKSPaaS.Avail) -> Swift.Bool
 }
 public class ADBreak : Swift.Decodable {
   final public let durationInSeconds: Swift.Double
@@ -507,6 +512,9 @@ public class ADBreak : Swift.Decodable {
   public var skipOffset: Swift.String?
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
+}
+extension ADBreak : Swift.Equatable {
+  public static func == (lhs: KKSPaaS.ADBreak, rhs: KKSPaaS.ADBreak) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class Logger {
   public static var shared: KKSPaaS.Logger
@@ -633,7 +641,7 @@ extension KKSAVPlayerDelegate {
   public var duration: Foundation.TimeInterval {
     get
   }
-  public var currentTime: Swift.Double {
+  public var currentTime: Foundation.TimeInterval {
     get
   }
   @objc override required dynamic public init()
@@ -895,7 +903,8 @@ extension Asset : AVFoundation.AVContentKeySessionDelegate {
 public struct SettingConfig {
   public var resolution: Swift.Int?
   public var sourceType: Swift.String?
-  public init(resolution: Swift.Int?, sourceType: Swift.String?)
+  public var shouldShowAutoPlay: Swift.Bool
+  public init(resolution: Swift.Int?, sourceType: Swift.String?, shouldShowAutoPlay: Swift.Bool = true)
 }
 public struct AppLayerContext {
   public var contentId: Swift.String
@@ -1008,6 +1017,8 @@ extension Asset {
   public var isReady: Swift.Bool {
     get
   }
+  public var coverImageUrlString: Swift.String?
+  public var shouldAutoLoad: Swift.Bool
   weak public var delegate: KKSPaaS.PlayerViewControllerDelegate?
   weak public var daiDelegate: KKSPaaS.PlayerViewControllerDAIDelegate?
   weak public var recommendViewDelegate: KKSPaaS.RecommendViewDelegate? {
@@ -1040,6 +1051,7 @@ extension PlayerViewController {
   public func changeContent(with id: Swift.String?)
   public func play()
   public func pause()
+  public func load()
   public func restart()
   public func swipeDownRecommendationPanel()
   public func swipeUpRecommendationPanel()
@@ -1083,7 +1095,7 @@ extension PlayerViewController : KKSPaaS.PlaybackHandlerDelegate {
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didChange title: Swift.String?, subtitle: Swift.String?, duration: Swift.String?)
   public func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
+  public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   public func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public struct SetComparer {
@@ -1187,6 +1199,9 @@ extension KKSDownloader {
   public var audioSessionEnabled: Swift.Bool
   @objc deinit
 }
+extension UIImageView {
+  public func setImage(with url: Foundation.URL?, completion: ((UIKit.UIImage?) -> Swift.Void)? = nil)
+}
 public struct Season : Swift.Decodable {
   public let id: Swift.String
   public let title: Swift.String
@@ -1214,7 +1229,7 @@ public protocol PlaybackHandlerDelegate : AnyObject {
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, shouldChangeBackground imageUrl: Swift.String?)
   func playbackHandlerDidEnd(_ handler: KKSPaaS.PlaybackHandler)
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
-  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval)
+  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public enum PlaybackBufferingCase {

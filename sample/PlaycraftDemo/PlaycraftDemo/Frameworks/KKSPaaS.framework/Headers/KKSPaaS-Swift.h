@@ -437,6 +437,7 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
+
 @protocol UIViewControllerTransitionCoordinator;
 
 @interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS))
@@ -472,6 +473,9 @@ SWIFT_CLASS("_TtC7KKSPaaS21SettingViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+
 
 
 

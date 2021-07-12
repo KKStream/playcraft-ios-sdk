@@ -17,8 +17,6 @@
 		6B0D199026243C80009AA553 /* KKSLocalization.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198026243C66009AA553 /* KKSLocalization.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B0D199126243C81009AA553 /* KKSNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198226243C67009AA553 /* KKSNetwork.xcframework */; };
 		6B0D199226243C81009AA553 /* KKSNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D198226243C67009AA553 /* KKSNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6B0D199526243C83009AA553 /* SDWebImage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D197E26243C64009AA553 /* SDWebImage.xcframework */; };
-		6B0D199626243C83009AA553 /* SDWebImage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0D197E26243C64009AA553 /* SDWebImage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C654C50E2625858E00FB57A6 /* KKSPaaS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C654C50C2625858900FB57A6 /* KKSPaaS.framework */; };
 		C654C50F2625858E00FB57A6 /* KKSPaaS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C654C50C2625858900FB57A6 /* KKSPaaS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -30,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6B0D199626243C83009AA553 /* SDWebImage.xcframework in Embed Frameworks */,
 				6B0D199226243C81009AA553 /* KKSNetwork.xcframework in Embed Frameworks */,
 				6B0D199026243C80009AA553 /* KKSLocalization.xcframework in Embed Frameworks */,
 				C654C50F2625858E00FB57A6 /* KKSPaaS.framework in Embed Frameworks */,
@@ -49,7 +46,6 @@
 		6B0D196C26243C3B009AA553 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0D196F26243C3B009AA553 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0D197126243C3B009AA553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B0D197E26243C64009AA553 /* SDWebImage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SDWebImage.xcframework; sourceTree = "<group>"; };
 		6B0D198026243C66009AA553 /* KKSLocalization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KKSLocalization.xcframework; sourceTree = "<group>"; };
 		6B0D198226243C67009AA553 /* KKSNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = KKSNetwork.xcframework; sourceTree = "<group>"; };
 		C654C50C2625858900FB57A6 /* KKSPaaS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KKSPaaS.framework; sourceTree = "<group>"; };
@@ -60,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0D199526243C83009AA553 /* SDWebImage.xcframework in Frameworks */,
 				6B0D199126243C81009AA553 /* KKSNetwork.xcframework in Frameworks */,
 				6B0D198F26243C80009AA553 /* KKSLocalization.xcframework in Frameworks */,
 				C654C50E2625858E00FB57A6 /* KKSPaaS.framework in Frameworks */,
@@ -107,7 +102,6 @@
 				C654C50C2625858900FB57A6 /* KKSPaaS.framework */,
 				6B0D198026243C66009AA553 /* KKSLocalization.xcframework */,
 				6B0D198226243C67009AA553 /* KKSNetwork.xcframework */,
-				6B0D197E26243C64009AA553 /* SDWebImage.xcframework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
