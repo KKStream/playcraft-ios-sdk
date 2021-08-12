@@ -775,6 +775,7 @@ public class Throttler {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class PlaybackHandler {
+  public var player: KKSPaaS.KKSAVPlayer!
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class PaaSSliderPanel : UIKit.UIView {
@@ -866,9 +867,41 @@ extension AVPlayerItem {
   public func useDefaultExpandedViewController()
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers public class PlayerView : UIKit.UIView {
+  final public let controller: KKSPaaS.PlayerViewController
+  public var rotateToPortraitWhenDisableFullscreen: Swift.Bool
+  public var enableRemoteCommand: Swift.Bool {
+    get
+    set
+  }
+  public var title: Swift.String? {
+    get
+    set
+  }
+  public var barButtonItems: [KKSPaaS.BarButtonItem]? {
+    get
+    set
+  }
+  public var videoGravity: AVFoundation.AVLayerVideoGravity {
+    get
+    set
+  }
+  public var controlView: UIKit.UIView {
+    get
+  }
+  @objc deinit
+  public init(withVideo video: KKSPaaS.VideoModel? = nil)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+}
+extension PlayerView {
+  public static var isFullscreen: Swift.Bool {
+    get
+  }
+  public func toggleFullscreen()
+}
 public class VideoModel {
   final public let title: Swift.String?
-  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, supportedResolutions: [KKSPaaS.Resolution] = [], startTimeMs: Swift.Double? = nil, autoHideControlPanel: Swift.Bool = true)
+  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, supportedResolutions: [KKSPaaS.Resolution] = [], startTimeMs: Swift.Double? = nil, thumbnailSeekingUrl: Foundation.URL? = nil)
   @objc deinit
 }
 public protocol DRMSolution {
@@ -876,6 +909,7 @@ public protocol DRMSolution {
 public protocol PlayerControllerEventDelegate : AnyObject {
   func didClickNextEpisode() -> KKSPaaS.VideoModel
   func didClickPrevEpisode() -> KKSPaaS.VideoModel
+  func userDidTapControlPanel(isHidden: Swift.Bool)
 }
 public struct KKSLicenseValidator {
   public init(current: Swift.Int64, license time: KKSPaaS.KKSLicenseTime?)
@@ -939,14 +973,13 @@ public struct SettingConfig {
   public var sourceType: Swift.String?
   public var shouldHideAutoPlay: Swift.Bool
   public var shouldHideVideoQuality: Swift.Bool
-  public var autoHideControlPanel: Swift.Bool
-  public init(resolution: Swift.Int?, sourceType: Swift.String?, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true, autoHideControlPanel: Swift.Bool = true)
+  public init(resolution: Swift.Int?, sourceType: Swift.String?, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true)
 }
 public struct AppLayerContext {
   public var contentId: Swift.String
   public var licenseId: Swift.String?
   public let contentType: KKSPaaS.ItemType
-  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil)
+  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil, videoDimension: CoreGraphics.CGSize? = nil)
 }
 @_hasMissingDesignatedInitializers public class KKSDownloader {
   public static let shared: KKSPaaS.KKSDownloader
@@ -1050,11 +1083,13 @@ extension Asset {
   }
 }
 @objc @_inheritsConvenienceInitializers open class PlayerViewController : UIKit.UIViewController {
+  public var playbackHandler: KKSPaaS.PlaybackHandler!
   public var isReady: Swift.Bool {
     get
   }
   public var coverImageUrlString: Swift.String?
   public var shouldAutoLoad: Swift.Bool
+  public var rotateToPortraitWhenDismiss: (Swift.Bool)
   public var enableBackgroundPlayback: Swift.Bool {
     get
     set
@@ -1072,7 +1107,7 @@ extension Asset {
   public var isPortalEnabled: Swift.Bool
   public var settingItemShouldHideConfig: [Swift.String : Swift.Bool]
   convenience public init(with appLayerContext: KKSPaaS.AppLayerContext)
-  convenience public init(withVideo model: KKSPaaS.VideoModel)
+  convenience public init(withVideo model: KKSPaaS.VideoModel?)
   @objc deinit
   @objc override dynamic open func viewDidLoad()
   @objc override dynamic open func motionEnded(_ motion: UIKit.UIEvent.EventSubtype, with event: UIKit.UIEvent?)
@@ -1090,13 +1125,18 @@ extension PlayerViewController {
   @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
 }
 extension PlayerViewController {
+  public func set(videoModel: KKSPaaS.VideoModel)
   public func changeContent(with id: Swift.String?)
   public func play()
   public func pause()
+  public func seek(to seconds: Foundation.TimeInterval, completion: ((Swift.Bool) -> Swift.Void)?)
   public func load()
   public func restart()
   public func swipeDownRecommendationPanel()
   public func swipeUpRecommendationPanel()
+  public func showControlPanel(_ needToShow: Swift.Bool)
+  public func playNextEpisode()
+  public func playPreviousEpisode()
 }
 extension PlayerViewController {
   public func setupDAI(adsLoader: GoogleInteractiveMediaAds.IMAAdsLoader)

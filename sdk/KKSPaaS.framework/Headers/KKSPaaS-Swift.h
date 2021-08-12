@@ -417,6 +417,15 @@ SWIFT_CLASS("_TtC7KKSPaaS15PaaSSliderPanel")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
+@interface PlayerView : UIView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
+
 @class UIEvent;
 
 SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
@@ -437,13 +446,13 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
-
 @protocol UIViewControllerTransitionCoordinator;
 
 @interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS))
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 @end
+
 
 
 
@@ -484,6 +493,7 @@ SWIFT_CLASS("_TtC7KKSPaaS7UIStyle")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 #if __has_attribute(external_source_symbol)
