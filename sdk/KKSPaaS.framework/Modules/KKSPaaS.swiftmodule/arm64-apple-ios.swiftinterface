@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name KKSPaaS
 import AVFoundation
+import AVKit
 import CoreData
 import CoreMedia
 import Foundation
@@ -274,6 +275,9 @@ public struct DownloadItem : Swift.Decodable {
   public var license: KKSPaaS.KKSLicense
   public let source: KKSPaaS.PlaybackSource
   public init(from decoder: Swift.Decoder) throws
+}
+extension PlayerViewController : AVKit.AVPictureInPictureControllerDelegate {
+  @objc dynamic public func pictureInPictureController(_ pictureInPictureController: AVKit.AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Swift.Bool) -> Swift.Void)
 }
 extension DownloadItemEntity {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<KKSPaaS.DownloadItemEntity>
@@ -600,6 +604,7 @@ extension PlaybackHandler : KKSPaaS.KKSAVPlayerDelegate {
   public func player(player: KKSPaaS.KKSAVPlayer, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
   public func player(player: KKSPaaS.KKSAVPlayer, didChange time: Foundation.TimeInterval, duration: Foundation.TimeInterval)
   public func player(player: KKSPaaS.KKSAVPlayer, didChange state: KKSPaaS.PlayerItemState, for item: KKSPaaS.KKSPlayerItem)
+  public func player(player: KKSPaaS.KKSAVPlayer, didChange rate: Swift.Float, for item: AVFoundation.AVPlayerItem)
   public func player(player: KKSPaaS.KKSAVPlayer, didChange status: AVFoundation.AVPlayerItem.Status, for item: AVFoundation.AVPlayerItem)
   public func playerDidEnterBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
   public func playerDidLeaveBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
@@ -630,11 +635,13 @@ public protocol KKSAVPlayerDelegate : AnyObject {
   func player(player: KKSPaaS.KKSAVPlayer, didChange time: Foundation.TimeInterval, duration: Foundation.TimeInterval)
   func player(player: KKSPaaS.KKSAVPlayer, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
   func player(player: KKSPaaS.KKSAVPlayer, didChange status: AVFoundation.AVPlayerItem.Status, for item: AVFoundation.AVPlayerItem)
+  func player(player: KKSPaaS.KKSAVPlayer, didChange rate: Swift.Float, for item: AVFoundation.AVPlayerItem)
   func playerDidEnterBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
   func playerDidLeaveBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
 }
 extension KKSAVPlayerDelegate {
   public func player(player: KKSPaaS.KKSAVPlayer, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
+  public func player(player: KKSPaaS.KKSAVPlayer, didChange rate: Swift.Float, for item: AVFoundation.AVPlayerItem)
 }
 @objc @_inheritsConvenienceInitializers public class KKSAVPlayer : ObjectiveC.NSObject {
   public var playerLayer: AVFoundation.AVPlayerLayer!
@@ -891,6 +898,7 @@ extension AVPlayerItem {
   }
   @objc deinit
   public init(withVideo video: KKSPaaS.VideoModel? = nil)
+  @objc override dynamic public func willMove(toSuperview newSuperview: UIKit.UIView?)
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
 }
 extension PlayerView {
@@ -1090,6 +1098,10 @@ extension Asset {
   public var coverImageUrlString: Swift.String?
   public var shouldAutoLoad: Swift.Bool
   public var rotateToPortraitWhenDismiss: (Swift.Bool)
+  public var enablePictureInPicture: Swift.Bool {
+    get
+    set
+  }
   public var enableBackgroundPlayback: Swift.Bool {
     get
     set

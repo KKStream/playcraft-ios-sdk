@@ -189,6 +189,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import AVFoundation;
+@import AVKit;
 @import CoreData;
 @import CoreGraphics;
 @import Foundation;
@@ -421,6 +422,7 @@ SWIFT_CLASS("_TtC7KKSPaaS15PaaSSliderPanel")
 SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
 @interface PlayerView : UIView
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
@@ -442,6 +444,12 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
+
+@class AVPictureInPictureController;
+
+@interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS)) <AVPictureInPictureControllerDelegate>
+- (void)pictureInPictureController:(AVPictureInPictureController * _Nonnull)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
+@end
 
 
 
