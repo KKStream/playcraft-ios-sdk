@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		zHgm4Lxv2bSjUQV+1LPUrsyQF9w=
+		bX12Ckx2U1yvpi8BWCZ80xNzH+4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		zHgm4Lxv2bSjUQV+1LPUrsyQF9w=
+		bX12Ckx2U1yvpi8BWCZ80xNzH+4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3Mm4P3dMjM04kcnjI5hP9HjON88=
+		R4n5pQ594NvvTFRnDotkrRzpzE4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftmodule</key>
 		<data>
-		3Mm4P3dMjM04kcnjI5hP9HjON88=
+		R4n5pQ594NvvTFRnDotkrRzpzE4=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		a1Xe27XzpT4hVcQbOInfOH53LPw=
+		5e2tM63+FoqgC0dkulX6B35FmBA=
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		a1Xe27XzpT4hVcQbOInfOH53LPw=
+		5e2tM63+FoqgC0dkulX6B35FmBA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -170,11 +170,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zHgm4Lxv2bSjUQV+1LPUrsyQF9w=
+			bX12Ckx2U1yvpi8BWCZ80xNzH+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			z7BlXhqeLIC0OCPcKPuwqGUpoXgL6wnZ33cefxxCJA4=
+			0oNjxP6wQGQxP1kUMJZ7VhPEgplRGal1i/7hSv130LI=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/arm64.swiftdoc</key>
@@ -203,11 +203,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zHgm4Lxv2bSjUQV+1LPUrsyQF9w=
+			bX12Ckx2U1yvpi8BWCZ80xNzH+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			z7BlXhqeLIC0OCPcKPuwqGUpoXgL6wnZ33cefxxCJA4=
+			0oNjxP6wQGQxP1kUMJZ7VhPEgplRGal1i/7hSv130LI=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
@@ -236,11 +236,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3Mm4P3dMjM04kcnjI5hP9HjON88=
+			R4n5pQ594NvvTFRnDotkrRzpzE4=
 			</data>
 			<key>hash2</key>
 			<data>
-			2EvDOHRkKiryQcR5i6Gx7DUl8wAP9Pk5lDG6OSEKO3g=
+			5+XeBRNSxwp8VUGyI5LIadVUZepYKII3/2x7wIK0kMY=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/i386.swiftdoc</key>
@@ -269,11 +269,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3Mm4P3dMjM04kcnjI5hP9HjON88=
+			R4n5pQ594NvvTFRnDotkrRzpzE4=
 			</data>
 			<key>hash2</key>
 			<data>
-			2EvDOHRkKiryQcR5i6Gx7DUl8wAP9Pk5lDG6OSEKO3g=
+			5+XeBRNSxwp8VUGyI5LIadVUZepYKII3/2x7wIK0kMY=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -302,11 +302,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a1Xe27XzpT4hVcQbOInfOH53LPw=
+			5e2tM63+FoqgC0dkulX6B35FmBA=
 			</data>
 			<key>hash2</key>
 			<data>
-			mbOAb3CUyz6rjSvKwHDBrr1zSvAUskNJ1UlRAu9Lpwc=
+			sEotzlALy3Jd+Dw1D7R53Z5AZqKzCHTt4RI2BPRhGx4=
 			</data>
 		</dict>
 		<key>Modules/KKSLocalization.swiftmodule/x86_64.swiftdoc</key>
@@ -335,11 +335,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a1Xe27XzpT4hVcQbOInfOH53LPw=
+			5e2tM63+FoqgC0dkulX6B35FmBA=
 			</data>
 			<key>hash2</key>
 			<data>
-			mbOAb3CUyz6rjSvKwHDBrr1zSvAUskNJ1UlRAu9Lpwc=
+			sEotzlALy3Jd+Dw1D7R53Z5AZqKzCHTt4RI2BPRhGx4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

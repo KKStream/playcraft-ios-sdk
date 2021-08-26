@@ -881,7 +881,7 @@ extension AVPlayerItem {
     get
     set
   }
-  public var title: Swift.String? {
+  public var titleHidden: Swift.Bool {
     get
     set
   }
@@ -909,14 +909,14 @@ extension PlayerView {
 }
 public class VideoModel {
   final public let title: Swift.String?
-  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, supportedResolutions: [KKSPaaS.Resolution] = [], startTimeMs: Swift.Double? = nil, thumbnailSeekingUrl: Foundation.URL? = nil)
+  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, startTimeMs: Swift.Double? = nil, thumbnailSeekingUrl: Foundation.URL? = nil)
   @objc deinit
 }
 public protocol DRMSolution {
 }
 public protocol PlayerControllerEventDelegate : AnyObject {
-  func didClickNextEpisode() -> KKSPaaS.VideoModel
-  func didClickPrevEpisode() -> KKSPaaS.VideoModel
+  func didClickNextEpisode() -> KKSPaaS.VideoModel?
+  func didClickPrevEpisode() -> KKSPaaS.VideoModel?
   func userDidTapControlPanel(isHidden: Swift.Bool)
 }
 public struct KKSLicenseValidator {
@@ -1142,6 +1142,8 @@ extension PlayerViewController {
   public func play()
   public func pause()
   public func seek(to seconds: Foundation.TimeInterval, completion: ((Swift.Bool) -> Swift.Void)?)
+  public func rewind()
+  public func forward()
   public func load()
   public func restart()
   public func swipeDownRecommendationPanel()
