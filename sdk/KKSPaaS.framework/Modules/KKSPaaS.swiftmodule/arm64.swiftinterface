@@ -60,15 +60,15 @@ public enum PlaybackMode {
     get
   }
 }
-public enum PlaybackState {
+public enum PlaybackState : Swift.String {
   case `init`
   case load
   case play
   case pause
   case end
-  public static func == (a: KKSPaaS.PlaybackState, b: KKSPaaS.PlaybackState) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -233,6 +233,11 @@ extension APIClientError {
   public var localizedMessage: Swift.String {
     get
   }
+}
+public let pLog: KKSPaaS.PLPrioritizingLogSystem
+@_hasMissingDesignatedInitializers public class PLPrioritizingLogSystem {
+  public func setEnabled(_ isEnabled: Swift.Bool)
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class HLSDownloadManager : ObjectiveC.NSObject {
   public static let shared: KKSPaaS.HLSDownloadManager
@@ -813,16 +818,16 @@ extension KKSDownloader {
   @discardableResult
   public func requestInfo(item id: Swift.String, parameters: [Swift.String : Swift.String], completion: @escaping (KKSPaaS.Result<KKSPaaS.DownloadInfo, KKSPaaS.PAASError>) -> Swift.Void) -> KKSPaaS.DownloadInfoRequest
 }
-public enum PlayerItemState {
+public enum PlayerItemState : Swift.String {
   case none
   case end
   case fail
   case playbackStalled
   case errorLog
   case accessLog
-  public static func == (a: KKSPaaS.PlayerItemState, b: KKSPaaS.PlayerItemState) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -881,7 +886,7 @@ extension AVPlayerItem {
     get
     set
   }
-  public var titleHidden: Swift.Bool {
+  public var title: Swift.String? {
     get
     set
   }
@@ -1088,6 +1093,17 @@ extension Asset {
     public static let downloadState: Swift.String
     public static let downloadSelectionDisplayName: Swift.String
     public static let resourceState: Swift.String
+  }
+}
+public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
+  case verbose, debug, info, warning, error
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
   }
 }
 @objc @_inheritsConvenienceInitializers open class PlayerViewController : UIKit.UIViewController {
@@ -1400,6 +1416,7 @@ extension KKSPaaS.PlaybackMode : Swift.Equatable {}
 extension KKSPaaS.PlaybackMode : Swift.Hashable {}
 extension KKSPaaS.PlaybackState : Swift.Equatable {}
 extension KKSPaaS.PlaybackState : Swift.Hashable {}
+extension KKSPaaS.PlaybackState : Swift.RawRepresentable {}
 extension KKSPaaS.ContentError : Swift.Equatable {}
 extension KKSPaaS.ContentError : Swift.Hashable {}
 extension KKSPaaS.ContentError : Swift.RawRepresentable {}
@@ -1425,9 +1442,13 @@ extension KKSPaaS.SettingChangedReason : Swift.Hashable {}
 extension KKSPaaS.SettingChangedReason : Swift.RawRepresentable {}
 extension KKSPaaS.PlayerItemState : Swift.Equatable {}
 extension KKSPaaS.PlayerItemState : Swift.Hashable {}
+extension KKSPaaS.PlayerItemState : Swift.RawRepresentable {}
 extension KKSPaaS.Asset.DownloadState : Swift.Equatable {}
 extension KKSPaaS.Asset.DownloadState : Swift.Hashable {}
 extension KKSPaaS.Asset.DownloadState : Swift.RawRepresentable {}
+extension KKSPaaS.PLLogSeverity : Swift.Equatable {}
+extension KKSPaaS.PLLogSeverity : Swift.Hashable {}
+extension KKSPaaS.PLLogSeverity : Swift.RawRepresentable {}
 extension KKSPaaS.DownloadState : Swift.Equatable {}
 extension KKSPaaS.DownloadState : Swift.Hashable {}
 extension KKSPaaS.DownloadState : Swift.RawRepresentable {}
