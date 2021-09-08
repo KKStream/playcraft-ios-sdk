@@ -90,149 +90,16 @@ public struct KKSLicenseTime : Swift.Decodable {
   public init()
   public init(from decoder: Swift.Decoder) throws
 }
-public enum ContentError : Swift.String, Swift.Error {
-  case unknown
-  case expired
-  case dataNotFound
-  case decodableFailed
-  case manifestIsEmpty
-  case urlIsEmpty
-  case vttIsEmpty
-  case badRequest
-  case isNotPlayable
-  case resolutionNotFound
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public enum DownloadError : Swift.String, Swift.Error {
-  case wifyOnly
-  case missingApplicationCertificate
-  case noCKCReturnedByKSM
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
 public struct PAASError : Swift.Error {
   public var clientError: KKSPaaS.APIClientError
   public var errorCode: Swift.String
   public var message: Swift.String
+}
+extension PAASError {
   public init(_ error: KKSPaaS.ContentError)
   public init(_ error: KKSPaaS.DownloadError)
   public init?(_ response: Foundation.URLResponse?, data: Foundation.Data? = nil)
   public init?(_ error: Swift.Error?)
-}
-public enum APIClientError : Swift.Error, Swift.Equatable {
-  public enum NetworkError {
-    case unknown
-    case timeout
-    case cannotConnectToInternet
-    case connectionLost
-    case cannotFindHost
-    case cannotConnectToHost
-    case cancelled
-    case badURL
-    case unsupportedURL
-    case DNSLookupFailed
-    case HTTPTooManyRedirects
-    case resourceUnavailable
-    case redirectToNonExistingLocation
-    case badServerResponse
-    case userCancelledAuthentication
-    case userAuthenticationRequired
-    case zeroByteResource
-    public static func == (a: KKSPaaS.APIClientError.NetworkError, b: KKSPaaS.APIClientError.NetworkError) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum APIError {
-    case none
-    case specifyArgumentNotFound
-    case internalServerError
-    case unauthorizedToPlay
-    case reachTheDeviceLimit
-    case badRequestData
-    case areaRestricted
-    case loginIsRequired
-    case downloadLimitIsReached
-    case notDownloadable
-    case underDevelopment
-    case underMaintanance
-    public static func == (a: KKSPaaS.APIClientError.APIError, b: KKSPaaS.APIClientError.APIError) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  case none
-  case httpURLResponseFailed
-  case contentError
-  case downloadError
-  case urlFailed(KKSPaaS.APIClientError.NetworkError)
-  case apiFailed(KKSPaaS.APIClientError.APIError)
-  case other(Swift.Int)
-  public static func == (a: KKSPaaS.APIClientError, b: KKSPaaS.APIClientError) -> Swift.Bool
-}
-extension APIClientError {
-  public var isUnknownError: Swift.Bool {
-    get
-  }
-  public var isCancelled: Swift.Bool {
-    get
-  }
-  public var isTimeoutError: Swift.Bool {
-    get
-  }
-  public var isAuthError: Swift.Bool {
-    get
-  }
-  public var isResourceError: Swift.Bool {
-    get
-  }
-  public var isDisconnected: Swift.Bool {
-    get
-  }
-  public var isUnauthorizedToPlay: Swift.Bool {
-    get
-  }
-  public var isInvalidArgument: Swift.Bool {
-    get
-  }
-  public var isInternalServerError: Swift.Bool {
-    get
-  }
-  public var isReachedDeviceLimit: Swift.Bool {
-    get
-  }
-  public var isAreaRestricted: Swift.Bool {
-    get
-  }
-  public var isLoginRequired: Swift.Bool {
-    get
-  }
-  public var isDownloadLimitReached: Swift.Bool {
-    get
-  }
-  public var isNotDownloadable: Swift.Bool {
-    get
-  }
-  public var isUnderDevelopment: Swift.Bool {
-    get
-  }
-  public var isUnderMaintanance: Swift.Bool {
-    get
-  }
-}
-extension APIClientError {
-  public var localizedMessage: Swift.String {
-    get
-  }
 }
 public let pLog: KKSPaaS.PLPrioritizingLogSystem
 @_hasMissingDesignatedInitializers public class PLPrioritizingLogSystem {
@@ -605,6 +472,33 @@ extension DownloadInfoEntity {
     @objc set
   }
 }
+public enum ContentError : Swift.Int, Swift.Error {
+  case unknown
+  case expired
+  case dataNotFound
+  case decodableFailed
+  case manifestIsEmpty
+  case urlIsEmpty
+  case vttIsEmpty
+  case badRequest
+  case isNotPlayable
+  case resolutionNotFound
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum DownloadError : Swift.Int, Swift.Error {
+  case wifyOnly
+  case missingApplicationCertificate
+  case noCKCReturnedByKSM
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 extension PlaybackHandler : KKSPaaS.KKSAVPlayerDelegate {
   public func player(player: KKSPaaS.KKSAVPlayer, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
   public func player(player: KKSPaaS.KKSAVPlayer, didChange time: Foundation.TimeInterval, duration: Foundation.TimeInterval)
@@ -634,6 +528,114 @@ public struct RecommendViewAttributes {
   public let startedHeight: CoreGraphics.CGFloat
   public let endedHeight: CoreGraphics.CGFloat
   public init(startedHeight: CoreGraphics.CGFloat, endedHeight: CoreGraphics.CGFloat)
+}
+public enum APIClientError : Swift.Error, Swift.Equatable {
+  case none
+  case httpURLResponseFailed
+  case contentError
+  case downloadError
+  case urlFailed(KKSPaaS.APIClientError.NetworkError)
+  case apiFailed(KKSPaaS.APIClientError.APIError)
+  case other(Swift.Int)
+  public enum NetworkError {
+    case unknown
+    case timedOut
+    case notConnectedToInternet
+    case networkConnectionLost
+    case cannotFindHost
+    case cannotConnectToHost
+    case cancelled
+    case badURL
+    case unsupportedURL
+    case dnsLookupFailed
+    case httpTooManyRedirects
+    case resourceUnavailable
+    case redirectToNonExistentLocation
+    case badServerResponse
+    case userCancelledAuthentication
+    case userAuthenticationRequired
+    case zeroByteResource
+    public static func == (a: KKSPaaS.APIClientError.NetworkError, b: KKSPaaS.APIClientError.NetworkError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum APIError {
+    case none
+    case specifyArgumentNotFound
+    case internalServerError
+    case unauthorizedToPlay
+    case reachTheDeviceLimit
+    case badRequestData
+    case areaRestricted
+    case loginIsRequired
+    case downloadLimitIsReached
+    case notDownloadable
+    case underDevelopment
+    case underMaintanance
+    public static func == (a: KKSPaaS.APIClientError.APIError, b: KKSPaaS.APIClientError.APIError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func == (a: KKSPaaS.APIClientError, b: KKSPaaS.APIClientError) -> Swift.Bool
+}
+extension APIClientError {
+  public var isUnknownError: Swift.Bool {
+    get
+  }
+  public var isCancelled: Swift.Bool {
+    get
+  }
+  public var isTimeoutError: Swift.Bool {
+    get
+  }
+  public var isAuthError: Swift.Bool {
+    get
+  }
+  public var isResourceError: Swift.Bool {
+    get
+  }
+  public var isDisconnected: Swift.Bool {
+    get
+  }
+  public var isUnauthorizedToPlay: Swift.Bool {
+    get
+  }
+  public var isInvalidArgument: Swift.Bool {
+    get
+  }
+  public var isInternalServerError: Swift.Bool {
+    get
+  }
+  public var isReachedDeviceLimit: Swift.Bool {
+    get
+  }
+  public var isAreaRestricted: Swift.Bool {
+    get
+  }
+  public var isLoginRequired: Swift.Bool {
+    get
+  }
+  public var isDownloadLimitReached: Swift.Bool {
+    get
+  }
+  public var isNotDownloadable: Swift.Bool {
+    get
+  }
+  public var isUnderDevelopment: Swift.Bool {
+    get
+  }
+  public var isUnderMaintanance: Swift.Bool {
+    get
+  }
+}
+extension APIClientError {
+  public var localizedMessage: Swift.String {
+    get
+  }
 }
 public protocol KKSAVPlayerDelegate : AnyObject {
   func player(player: KKSPaaS.KKSAVPlayer, didChange state: KKSPaaS.PlayerItemState, for item: KKSPaaS.KKSPlayerItem)
@@ -1417,6 +1419,11 @@ extension KKSPaaS.PlaybackMode : Swift.Hashable {}
 extension KKSPaaS.PlaybackState : Swift.Equatable {}
 extension KKSPaaS.PlaybackState : Swift.Hashable {}
 extension KKSPaaS.PlaybackState : Swift.RawRepresentable {}
+extension KKSPaaS.BarItemType : Swift.Equatable {}
+extension KKSPaaS.BarItemType : Swift.Hashable {}
+extension KKSPaaS.BarItemType : Swift.RawRepresentable {}
+extension KKSPaaS.KKSCoreDataError : Swift.Equatable {}
+extension KKSPaaS.KKSCoreDataError : Swift.Hashable {}
 extension KKSPaaS.ContentError : Swift.Equatable {}
 extension KKSPaaS.ContentError : Swift.Hashable {}
 extension KKSPaaS.ContentError : Swift.RawRepresentable {}
@@ -1427,11 +1434,6 @@ extension KKSPaaS.APIClientError.NetworkError : Swift.Equatable {}
 extension KKSPaaS.APIClientError.NetworkError : Swift.Hashable {}
 extension KKSPaaS.APIClientError.APIError : Swift.Equatable {}
 extension KKSPaaS.APIClientError.APIError : Swift.Hashable {}
-extension KKSPaaS.BarItemType : Swift.Equatable {}
-extension KKSPaaS.BarItemType : Swift.Hashable {}
-extension KKSPaaS.BarItemType : Swift.RawRepresentable {}
-extension KKSPaaS.KKSCoreDataError : Swift.Equatable {}
-extension KKSPaaS.KKSCoreDataError : Swift.Hashable {}
 extension KKSPaaS.ContentKeyContextMode : Swift.Equatable {}
 extension KKSPaaS.ContentKeyContextMode : Swift.Hashable {}
 extension KKSPaaS.SettingItem.ItemOption : Swift.Equatable {}
