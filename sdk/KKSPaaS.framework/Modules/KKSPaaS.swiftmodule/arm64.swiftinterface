@@ -988,7 +988,7 @@ public struct SettingConfig {
   public var sourceType: Swift.String?
   public var shouldHideAutoPlay: Swift.Bool
   public var shouldHideVideoQuality: Swift.Bool
-  public init(resolution: Swift.Int?, sourceType: Swift.String?, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true)
+  public init(resolution: Swift.Int? = nil, sourceType: Swift.String? = nil, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true)
 }
 public struct AppLayerContext {
   public var contentId: Swift.String
@@ -1116,6 +1116,10 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
   public var coverImageUrlString: Swift.String?
   public var shouldAutoLoad: Swift.Bool
   public var rotateToPortraitWhenDismiss: (Swift.Bool)
+  public var shouldHideStatusBar: Swift.Bool {
+    get
+    set
+  }
   public var enablePictureInPicture: Swift.Bool {
     get
     set
@@ -1137,10 +1141,13 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
   public var isPortalEnabled: Swift.Bool
   public var settingItemShouldHideConfig: [Swift.String : Swift.Bool]
   convenience public init(with appLayerContext: KKSPaaS.AppLayerContext)
-  convenience public init(withVideo model: KKSPaaS.VideoModel?)
+  convenience public init(withVideo model: KKSPaaS.VideoModel?, settingConfig: KKSPaaS.SettingConfig? = nil)
   @objc deinit
   @objc override dynamic open func viewDidLoad()
   @objc override dynamic open func motionEnded(_ motion: UIKit.UIEvent.EventSubtype, with event: UIKit.UIEvent?)
+  @objc override dynamic open var prefersStatusBarHidden: Swift.Bool {
+    @objc get
+  }
   @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
     @objc get
   }
@@ -1169,6 +1176,7 @@ extension PlayerViewController {
   public func showControlPanel(_ needToShow: Swift.Bool)
   public func playNextEpisode()
   public func playPreviousEpisode()
+  public func lockControlPanel(_ lock: Swift.Bool)
 }
 extension PlayerViewController {
   public func setupDAI(adsLoader: GoogleInteractiveMediaAds.IMAAdsLoader)
