@@ -833,14 +833,21 @@ public enum PlayerItemState : Swift.String {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KKSPlayerItem : AVFoundation.AVPlayerItem {
+@objc @_inheritsConvenienceInitializers public class KKSPlayerItem : AVFoundation.AVPlayerItem {
+  @available(*, deprecated, message: "Please use delegate to receive these events")
   public var didPlayToEnd: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
+  @available(*, deprecated, message: "Please use delegate to receive these events")
   public var didFail: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
+  @available(*, deprecated, message: "Please use delegate to receive these events")
   public var didPlaybackStalled: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
+  @available(*, deprecated, message: "Please use delegate to receive these events")
   public var didReceiveAccessLog: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
+  @available(*, deprecated, message: "Please use delegate to receive these events")
   public var didReceiveErrorLog: ((KKSPaaS.KKSPlayerItem) -> Swift.Void)?
-  convenience public init(asset: AVFoundation.AVAsset, owner: KKSPaaS.KKSAVPlayer)
+  convenience public init(urlAsset: AVFoundation.AVURLAsset)
   @objc deinit
+  @available(iOS 7.0, *)
+  @objc override dynamic public init(asset: AVFoundation.AVAsset, automaticallyLoadedAssetKeys: [Swift.String]?)
 }
 extension KKSPlayerItem {
   public var isLicenseExpired: Swift.Bool {
@@ -904,7 +911,7 @@ extension AVPlayerItem {
     get
   }
   @objc deinit
-  public init(withVideo video: KKSPaaS.VideoModel? = nil)
+  public init(withVideo video: KKSPaaS.VideoModel? = nil, settingConfig: KKSPaaS.SettingConfig? = nil)
   @objc override dynamic public func willMove(toSuperview newSuperview: UIKit.UIView?)
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
 }
@@ -938,6 +945,9 @@ public struct Series : Swift.Decodable {
 }
 @objc public class NavigationController : UIKit.UINavigationController {
   @objc override dynamic public var childForStatusBarStyle: UIKit.UIViewController? {
+    @objc get
+  }
+  @objc override dynamic public var childForStatusBarHidden: UIKit.UIViewController? {
     @objc get
   }
   @objc override dynamic public init(rootViewController: UIKit.UIViewController)

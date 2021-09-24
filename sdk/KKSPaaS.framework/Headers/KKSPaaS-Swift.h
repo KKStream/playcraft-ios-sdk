@@ -383,7 +383,7 @@ SWIFT_CLASS("_TtC7KKSPaaS11KKSAVPlayer")
 
 SWIFT_CLASS("_TtC7KKSPaaS13KKSPlayerItem")
 @interface KKSPlayerItem : AVPlayerItem
-- (nonnull instancetype)initWithAsset:(AVAsset * _Nonnull)asset automaticallyLoadedAssetKeys:(NSArray<NSString *> * _Nullable)automaticallyLoadedAssetKeys SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithAsset:(AVAsset * _Nonnull)asset automaticallyLoadedAssetKeys:(NSArray<NSString *> * _Nullable)automaticallyLoadedAssetKeys OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=7.0);
 @end
 
 
@@ -397,6 +397,7 @@ SWIFT_CLASS("_TtC7KKSPaaS13KKSPlayerItem")
 SWIFT_CLASS("_TtC7KKSPaaS20NavigationController")
 @interface NavigationController : UINavigationController
 @property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarStyle;
+@property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarHidden;
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
