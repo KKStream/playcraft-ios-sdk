@@ -189,6 +189,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import AVFoundation;
+@import AVKit;
 @import CoreData;
 @import CoreGraphics;
 @import Foundation;
@@ -382,7 +383,7 @@ SWIFT_CLASS("_TtC7KKSPaaS11KKSAVPlayer")
 
 SWIFT_CLASS("_TtC7KKSPaaS13KKSPlayerItem")
 @interface KKSPlayerItem : AVPlayerItem
-- (nonnull instancetype)initWithAsset:(AVAsset * _Nonnull)asset automaticallyLoadedAssetKeys:(NSArray<NSString *> * _Nullable)automaticallyLoadedAssetKeys SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithAsset:(AVAsset * _Nonnull)asset automaticallyLoadedAssetKeys:(NSArray<NSString *> * _Nullable)automaticallyLoadedAssetKeys OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=7.0);
 @end
 
 
@@ -396,6 +397,7 @@ SWIFT_CLASS("_TtC7KKSPaaS13KKSPlayerItem")
 SWIFT_CLASS("_TtC7KKSPaaS20NavigationController")
 @interface NavigationController : UINavigationController
 @property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarStyle;
+@property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarHidden;
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -417,12 +419,23 @@ SWIFT_CLASS("_TtC7KKSPaaS15PaaSSliderPanel")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
+@interface PlayerView : UIView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
+
 @class UIEvent;
 
 SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 @interface PlayerViewController : UIViewController
 - (void)viewDidLoad;
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent * _Nullable)event;
+@property (nonatomic, readonly) BOOL prefersStatusBarHidden;
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 @property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -434,6 +447,11 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
+@class AVPictureInPictureController;
+
+@interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS)) <AVPictureInPictureControllerDelegate>
+- (void)pictureInPictureController:(AVPictureInPictureController * _Nonnull)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
+@end
 
 
 
@@ -444,6 +462,7 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 @end
+
 
 
 
@@ -484,6 +503,7 @@ SWIFT_CLASS("_TtC7KKSPaaS7UIStyle")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 #if __has_attribute(external_source_symbol)
