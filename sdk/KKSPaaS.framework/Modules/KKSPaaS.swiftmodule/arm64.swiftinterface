@@ -965,8 +965,16 @@ public protocol RecommendViewDelegate : AnyObject {
   func didAppear(_ recommendView: KKSPaaS.RecommendView)
   func didDisappear(_ recommendView: KKSPaaS.RecommendView)
 }
+public struct ProcessDrmDataEnvelope {
+  public let token: Swift.String
+  public let keyURL: Foundation.URL
+  public let certURL: Foundation.URL
+  public let customHeader: [Swift.String : Swift.String]
+  public init(token: Swift.String, keyURL: Foundation.URL, certURL: Foundation.URL, customHeader: [Swift.String : Swift.String])
+}
 public protocol ContentKeyContextCustomizable {
-  func loadContentKeyContext(with token: Swift.String, keyURL: Foundation.URL, certURL: Foundation.URL, custom header: [Swift.String : Swift.String], loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
+  var envelope: KKSPaaS.ProcessDrmDataEnvelope { get }
+  func resolveDRM(loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
   func respondCKC(to loadingRequest: AVFoundation.AVAssetResourceLoadingRequest, with request: Foundation.URLRequest)
   func getSPCData(with loadingRequest: AVFoundation.AVAssetResourceLoadingRequest, forApp identifier: Foundation.Data?) -> Foundation.Data?
   func getDRMData(with token: Swift.String, isOffline: Swift.Bool) -> Swift.String
