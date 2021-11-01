@@ -668,6 +668,10 @@ extension KKSAVPlayerDelegate {
   public var isItemReadyToPlay: Swift.Bool {
     get
   }
+  public var isMuted: Swift.Bool {
+    get
+    set
+  }
 }
 extension KKSAVPlayer : AVFoundation.AVAssetResourceLoaderDelegate {
   @objc dynamic public func resourceLoader(_ resourceLoader: AVFoundation.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVFoundation.AVAssetResourceLoadingRequest) -> Swift.Bool
@@ -1195,6 +1199,7 @@ extension PlayerViewController {
   public func playNextEpisode()
   public func playPreviousEpisode()
   public func lockControlPanel(_ lock: Swift.Bool)
+  public func setMute(_ isMute: Swift.Bool)
 }
 extension PlayerViewController {
   public func setupDAI(adsLoader: GoogleInteractiveMediaAds.IMAAdsLoader)
