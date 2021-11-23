@@ -399,6 +399,52 @@ extension KKSPaaS.ADBreak : Swift.Equatable {
   @objc deinit
 }
 extension KKSPaaS.Logger {
+  public enum EventName : Swift.String {
+    case playbackBegan
+    case playbackStarted
+    case playbackStopped
+    case playbackEnded
+    case seekingEnded
+    case playbackError
+    case adPlaybackStarted
+    case adPlaybackStopped
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum PropertyName : Swift.String {
+    case id
+    case name
+    case name2
+    case sectionId
+    case playbackMode
+    case sessionId
+    case playerName
+    case moduleVersion
+    case totalDuration
+    case currentPosition
+    case playerStartupTime
+    case videoStartupTime
+    case videoPlayedDuration
+    case seekFrom
+    case seekTo
+    case moduleErrorCode
+    case playerErrorCode
+    case playbackPercentage
+    case videoTotalPlayedDuration
+    case adTotalPlayedDuration
+    case adPlayedDuration
+    case ssai
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension KKSPaaS.Logger {
   public struct Keys {
     public static let EventName: Swift.String
     public static let EventProperty: Swift.String
@@ -928,6 +974,15 @@ public protocol PlayerControllerEventDelegate : AnyObject {
   func didClickNextEpisode() -> KKSPaaS.VideoModel?
   func didClickPrevEpisode() -> KKSPaaS.VideoModel?
   func userDidTapControlPanel(isHidden: Swift.Bool)
+  func logEvent(eventName: Swift.String, properties: [Swift.String : Any])
+}
+public struct LogEvent {
+  public static let play: Swift.String
+  public static let pause: Swift.String
+  public static let rewind: Swift.String
+  public static let forward: Swift.String
+  public static let prevEpisode: Swift.String
+  public static let nextEpisode: Swift.String
 }
 public struct KKSLicenseValidator {
   public init(current: Swift.Int64, license time: KKSPaaS.KKSLicenseTime?)
@@ -1439,6 +1494,12 @@ extension KKSPaaS.PlaybackMode : Swift.Hashable {}
 extension KKSPaaS.PlaybackState : Swift.Equatable {}
 extension KKSPaaS.PlaybackState : Swift.Hashable {}
 extension KKSPaaS.PlaybackState : Swift.RawRepresentable {}
+extension KKSPaaS.Logger.EventName : Swift.Equatable {}
+extension KKSPaaS.Logger.EventName : Swift.Hashable {}
+extension KKSPaaS.Logger.EventName : Swift.RawRepresentable {}
+extension KKSPaaS.Logger.PropertyName : Swift.Equatable {}
+extension KKSPaaS.Logger.PropertyName : Swift.Hashable {}
+extension KKSPaaS.Logger.PropertyName : Swift.RawRepresentable {}
 extension KKSPaaS.BarItemType : Swift.Equatable {}
 extension KKSPaaS.BarItemType : Swift.Hashable {}
 extension KKSPaaS.BarItemType : Swift.RawRepresentable {}
