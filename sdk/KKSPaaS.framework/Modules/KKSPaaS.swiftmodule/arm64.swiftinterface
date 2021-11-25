@@ -965,7 +965,7 @@ extension KKSPaaS.PlayerView {
 }
 public class VideoModel {
   final public let title: Swift.String?
-  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, startTimeMs: Swift.Double? = nil, thumbnailSeekingUrl: Foundation.URL? = nil)
+  public init(title: Swift.String?, sourceURL: Foundation.URL?, nextEpisodeButtonEnabled: Swift.Bool, prevEpisodeButtonEnabled: Swift.Bool, drmSolution: KKSPaaS.DRMSolution?, playerControllerEventDelegate: KKSPaaS.PlayerControllerEventDelegate? = nil, startTimeMs: Swift.Double? = nil, thumbnailSeekingUrl: Foundation.URL? = nil, userDictionary: [Swift.String : Swift.String] = [:])
   @objc deinit
 }
 public protocol DRMSolution {
