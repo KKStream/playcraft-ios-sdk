@@ -1122,6 +1122,9 @@ extension KKSPaaS.KKSDownloader {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
+extension KKSPaaS.SettingViewController : UIKit.UIAdaptivePresentationControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func presentationControllerDidDismiss(_ presentationController: UIKit.UIPresentationController)
+}
 public struct KKSAssetURLMaker {
   public init()
   public func userDirectoryUrl(with name: Swift.String) -> Foundation.URL
