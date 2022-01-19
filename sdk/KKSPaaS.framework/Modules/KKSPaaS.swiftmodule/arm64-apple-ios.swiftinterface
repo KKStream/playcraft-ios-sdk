@@ -1198,6 +1198,10 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var preferredForwardBufferDuration: Foundation.TimeInterval {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var enablePictureInPicture: Swift.Bool {
     get
     set
