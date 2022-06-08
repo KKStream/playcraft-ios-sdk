@@ -170,6 +170,20 @@ extension AVFoundation.AVPlayerItem {
     get
   }
 }
+@_hasMissingDesignatedInitializers public class PLLogPitch {
+  final public let createdDate: Foundation.Date
+  final public let logSeverity: Swift.Int
+  final public let file: Swift.String
+  final public let line: Swift.Int
+  final public let method: Swift.String
+  final public let message: Swift.String
+  @objc deinit
+}
+extension KKSPaaS.PLLogPitch : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
 public struct PAASError : Swift.Error {
   public var clientError: KKSPaaS.APIClientError
   public var errorCode: Swift.String
@@ -185,6 +199,7 @@ extension KKSPaaS.PAASError {
 public let pLog: KKSPaaS.PLPrioritizingLogSystem
 @_hasMissingDesignatedInitializers public class PLPrioritizingLogSystem {
   public func setEnabled(_ isEnabled: Swift.Bool)
+  public var pitches: [KKSPaaS.PLLogPitch]
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class HLSDownloadManager : ObjectiveC.NSObject {
@@ -809,6 +824,7 @@ public protocol PlayerViewControllerDelegate : AnyObject {
 }
 public protocol PlayerViewControllerDAIDelegate : AnyObject {
   func playerViewController(_ controller: KKSPaaS.PlayerViewController, requestLiveStreamWithKey assetKey: Swift.String, videoPlayer: AVFoundation.AVPlayer, adView: UIKit.UIView) -> GoogleInteractiveMediaAds.IMALiveStreamRequest
+  func playerViewController(_ controller: KKSPaaS.PlayerViewController, requestVODStreamWithVideoId videoID: Swift.String, contentSourceId sourceId: Swift.String, videoPlayer: AVFoundation.AVPlayer, adView: UIKit.UIView) -> GoogleInteractiveMediaAds.IMAVODStreamRequest
 }
 extension KKSPaaS.PlayerViewControllerDelegate {
   public func playerViewController(_ controller: KKSPaaS.PlayerViewController?, didReceiveAPI error: KKSPaaS.PAASError)
@@ -1141,6 +1157,8 @@ extension KKSPaaS.KKSAVPlayerDelegate {
   public func player(player: KKSPaaS.KKSAVPlayer, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
   public func player(player: KKSPaaS.KKSAVPlayer, didChange rate: Swift.Float, for item: AVFoundation.AVPlayerItem)
   public func player(player: KKSPaaS.KKSAVPlayer, didChangeLoadedTimeRanges loadedTimeRanges: [CoreMedia.CMTimeRange], for item: AVFoundation.AVPlayerItem)
+  public func playerDidEnterBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
+  public func playerDidLeaveBuffering(player: KKSPaaS.KKSAVPlayer, for item: AVFoundation.AVPlayerItem)
 }
 @objc @_inheritsConvenienceInitializers public class KKSAVPlayer : ObjectiveC.NSObject {
   public var playerLayer: AVFoundation.AVPlayerLayer!
@@ -1240,13 +1258,23 @@ extension KKSPaaS.Asset {
     public static let resourceState: Swift.String
   }
 }
-public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
+public struct PreloadContentData : Swift.Equatable {
+  public let contentId: Swift.String
+  public let contentType: KKSPaaS.ItemType
+  public init(id: Swift.String, type: KKSPaaS.ItemType)
+  public static func == (a: KKSPaaS.PreloadContentData, b: KKSPaaS.PreloadContentData) -> Swift.Bool
+}
+public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible, Swift.CaseIterable {
   case verbose, debug, info, warning, error
   public var description: Swift.String {
     get
   }
   public init?(rawValue: Swift.Int)
+  public typealias AllCases = [KKSPaaS.PLLogSeverity]
   public typealias RawValue = Swift.Int
+  public static var allCases: [KKSPaaS.PLLogSeverity] {
+    get
+  }
   public var rawValue: Swift.Int {
     get
   }
@@ -1286,12 +1314,10 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible {
     get
   }
   @_Concurrency.MainActor(unsafe) public var contentKeyContextMode: KKSPaaS.ContentKeyContextMode
-  @_Concurrency.MainActor(unsafe) public var isPortalEnabled: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var settingItemShouldHideConfig: [Swift.String : Swift.Bool]
   @_Concurrency.MainActor(unsafe) convenience public init(with appLayerContext: KKSPaaS.AppLayerContext)
   @_Concurrency.MainActor(unsafe) convenience public init(withVideo model: KKSPaaS.VideoModel?, settingConfig: KKSPaaS.SettingConfig? = nil)
   @objc deinit
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func motionEnded(_ motion: UIKit.UIEvent.EventSubtype, with event: UIKit.UIEvent?)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var prefersStatusBarHidden: Swift.Bool {
     @_Concurrency.MainActor(unsafe) @objc get
   }
@@ -1361,6 +1387,17 @@ extension KKSPaaS.PlayerViewController : KKSPaaS.PlaybackHandlerDelegate {
   @_Concurrency.MainActor(unsafe) public func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
 }
 public struct SetComparer {
+}
+public protocol PreloadManifestDelegate : AnyObject {
+  func preloadManifest(_ sender: KKSPaaS.PreloadManifest, isWorking: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers public class PreloadManifest {
+  public static let shared: KKSPaaS.PreloadManifest
+  public func setupPlaybackServerInfo(host: Swift.String, token: Swift.String, customHeader: [Swift.String : Swift.String]?, customQuery: [Swift.String : Swift.String])
+  public func preload(list: [KKSPaaS.PreloadContentData], completion: @escaping () -> Swift.Void)
+  public func checkModelIsAlreadyInCache(model: KKSPaaS.PreloadContentData) -> Swift.Bool
+  public var preloadList: [KKSPaaS.PreloadContentData]
+  @objc deinit
 }
 public enum DownloadState : Swift.Int16 {
   case pending

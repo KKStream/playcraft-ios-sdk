@@ -429,11 +429,9 @@ SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
 
 
 
-@class UIEvent;
 
 SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 @interface PlayerViewController : UIViewController
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent * _Nullable)event;
 @property (nonatomic, readonly) BOOL prefersStatusBarHidden;
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 @property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
