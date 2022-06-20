@@ -821,6 +821,7 @@ public protocol PlayerViewControllerDelegate : AnyObject {
   func playerViewController(_ controller: KKSPaaS.PlayerViewController, requestResolutionFromAvailableResource resource: [KKSPaaS.Resolution], current resolution: Swift.Int?) -> KKSPaaS.Resolution?
   func playerViewController(_ controller: KKSPaaS.PlayerViewController, replaceDisplayedTextIn resolution: KKSPaaS.Resolution) -> Swift.String
   func playerViewController(_ controller: KKSPaaS.PlayerViewController, didReceiveCKC loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
+  func playerViewController(_ controller: KKSPaaS.PlayerViewController, didReceivePlaybackAPIStart data: Foundation.Data?)
 }
 public protocol PlayerViewControllerDAIDelegate : AnyObject {
   func playerViewController(_ controller: KKSPaaS.PlayerViewController, requestLiveStreamWithKey assetKey: Swift.String, videoPlayer: AVFoundation.AVPlayer, adView: UIKit.UIView) -> GoogleInteractiveMediaAds.IMALiveStreamRequest
@@ -837,6 +838,7 @@ extension KKSPaaS.PlayerViewControllerDelegate {
   public func playerViewController(_ controller: KKSPaaS.PlayerViewController?, didChangeItem id: Swift.String, for type: KKSPaaS.ItemType)
   public func playerViewController(_ controller: KKSPaaS.PlayerViewController?, didChange resolution: Swift.Int?, for reason: KKSPaaS.SettingChangedReason)
   public func playerViewController(_ controller: KKSPaaS.PlayerViewController?, didChange source: Swift.String, for reason: KKSPaaS.SettingChangedReason)
+  public func playerViewController(_ controller: KKSPaaS.PlayerViewController, didReceivePlaybackAPIStart data: Foundation.Data?)
 }
 extension KKSPaaS.NetworkRequest : KKSNetwork.KKSNetworkRequest {
 }
@@ -952,7 +954,7 @@ extension KKSPaaS.PlayerViewController {
 }
 extension KKSPaaS.KKSDownloader {
   @discardableResult
-  public func requestInfo(item id: Swift.String, parameters: [Swift.String : Swift.String], completion: @escaping (KKSPaaS.Result<KKSPaaS.DownloadInfo, KKSPaaS.PAASError>) -> Swift.Void) -> KKSPaaS.DownloadInfoRequest
+  public func requestInfo(item id: Swift.String, parameters: [Swift.String : Swift.String], completion: @escaping (Swift.Result<KKSPaaS.DownloadInfo, KKSPaaS.PAASError>) -> Swift.Void) -> KKSPaaS.DownloadInfoRequest
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GoogleCastManager : ObjectiveC.NSObject {
   public static let shared: KKSPaaS.GoogleCastManager
@@ -1392,6 +1394,7 @@ extension KKSPaaS.PlayerViewController : KKSPaaS.PlaybackHandlerDelegate {
   @_Concurrency.MainActor(unsafe) public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   @_Concurrency.MainActor(unsafe) public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   @_Concurrency.MainActor(unsafe) public func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
+  @_Concurrency.MainActor(unsafe) public func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceivePlaybackAPIStart data: Foundation.Data?)
 }
 public struct SetComparer {
 }
@@ -1515,10 +1518,6 @@ public struct Season : Swift.Decodable {
   public let series: KKSPaaS.Series
   public init(from decoder: Swift.Decoder) throws
 }
-public enum Result<T, E> where T : Swift.Decodable, E : Swift.Error {
-  case success(T)
-  case failure(E)
-}
 public protocol PlaybackHandlerDelegate : AnyObject {
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didChange resolution: Swift.Int?, for reason: KKSPaaS.SettingChangedReason)
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, replaceDisplayedTextIn resolution: KKSPaaS.Resolution) -> Swift.String
@@ -1537,6 +1536,7 @@ public protocol PlaybackHandlerDelegate : AnyObject {
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceive event: KKSPaaS.ADBreakEvent, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didUpdate progress: Foundation.TimeInterval, for adBreak: KKSPaaS.ADBreak, of avail: KKSPaaS.Avail)
   func playbackHandlerDidStop(_ handler: KKSPaaS.PlaybackHandler)
+  func playbackHandler(_ handler: KKSPaaS.PlaybackHandler, didReceivePlaybackAPIStart data: Foundation.Data?)
 }
 public enum PlaybackBufferingCase {
   case buffering, keepup
