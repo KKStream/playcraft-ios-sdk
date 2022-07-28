@@ -252,6 +252,7 @@ SWIFT_CLASS("_TtC7KKSPaaS19AudioSessionManager")
 @end
 
 
+
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 
@@ -405,21 +406,6 @@ SWIFT_CLASS("_TtC7KKSPaaS20NavigationController")
 @end
 
 
-SWIFT_CLASS("_TtC7KKSPaaS16PaaSGradientView")
-@interface PaaSGradientView : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@end
-
-
-SWIFT_CLASS("_TtC7KKSPaaS15PaaSSliderPanel")
-@interface PaaSSliderPanel : UIView
-- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
 @interface PlayerView : UIView
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
@@ -432,21 +418,11 @@ SWIFT_CLASS("_TtC7KKSPaaS10PlayerView")
 
 SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 @interface PlayerViewController : UIViewController
-@property (nonatomic, readonly) BOOL prefersStatusBarHidden;
-@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
-@property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-
-@protocol UIViewControllerTransitionCoordinator;
-
-@interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS))
-- (void)viewDidLoad;
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
-@end
 
 
 @class AVPictureInPictureController;
@@ -462,8 +438,14 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
+@protocol UIViewControllerTransitionCoordinator;
 
 @interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS))
+@property (nonatomic, readonly) BOOL prefersStatusBarHidden;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+@property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
+- (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
 @end
 
@@ -508,11 +490,13 @@ SWIFT_CLASS("_TtC7KKSPaaS21SettingViewController")
 
 
 
+
 SWIFT_CLASS("_TtC7KKSPaaS7UIStyle")
 @interface UIStyle : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
