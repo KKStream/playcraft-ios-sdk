@@ -280,6 +280,7 @@ SWIFT_CLASS_NAMED("DownloadItemEntity")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSDate;
 @class FairPlayEntity;
 
 @interface DownloadItemEntity (SWIFT_EXTENSION(KKSPaaS))
@@ -309,6 +310,7 @@ SWIFT_CLASS_NAMED("DownloadItemEntity")
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic, copy) NSString * _Nullable userId;
 @property (nonatomic, strong) DownloadInfoEntity * _Nullable downloadInfo;
+@property (nonatomic, copy) NSDate * _Nullable downloadedDate;
 @property (nonatomic, strong) FairPlayEntity * _Nullable fairPlay;
 @end
 
@@ -425,12 +427,12 @@ SWIFT_CLASS("_TtC7KKSPaaS20PlayerViewController")
 
 
 
+
 @class AVPictureInPictureController;
 
 @interface PlayerViewController (SWIFT_EXTENSION(KKSPaaS)) <AVPictureInPictureControllerDelegate>
 - (void)pictureInPictureController:(AVPictureInPictureController * _Nonnull)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 @end
-
 
 
 

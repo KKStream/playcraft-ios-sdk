@@ -14,12 +14,16 @@ import MediaPlayer
 import Swift
 import UIKit
 import _Concurrency
-public enum ItemType : Swift.String {
+public enum ItemType : Swift.String, Swift.CaseIterable {
   case videos
   case lives
   case offline
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [KKSPaaS.ItemType]
   public typealias RawValue = Swift.String
+  public static var allCases: [KKSPaaS.ItemType] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -360,6 +364,10 @@ extension KKSPaaS.DownloadItemEntity {
     @objc get
     @objc set
   }
+  @objc @NSManaged dynamic public var downloadedDate: Foundation.Date? {
+    @objc get
+    @objc set
+  }
   @objc @NSManaged dynamic public var fairPlay: KKSPaaS.FairPlayEntity? {
     @objc get
     @objc set
@@ -376,6 +384,7 @@ public struct PaaSSeason {
 extension KKSPaaS.KKSDownloader {
   public func makeSeasonList(by seriesId: Swift.String) -> [KKSPaaS.PaaSSeason]
   public func makeSeasonList(_ streams: [KKSPaaS.DownloadStream]) -> [KKSPaaS.PaaSSeason]
+  public func getPreviousStreamIfDownloaded(_ stream: KKSPaaS.DownloadStream) -> KKSPaaS.DownloadStream?
   public func getNextStreamIfDownloaded(_ stream: KKSPaaS.DownloadStream) -> KKSPaaS.DownloadStream?
 }
 public protocol GoogleCastSessionDelegate : AnyObject {
@@ -449,6 +458,9 @@ public struct PlaybackInfo : Swift.Decodable {
 }
 public struct PlaybackSource : Swift.Decodable {
   public let type: Swift.String?
+  public var subdub: Swift.String? {
+    get
+  }
   public var manifest: KKSPaaS.Manifest? {
     get
   }
@@ -547,6 +559,7 @@ extension KKSPaaS.Logger {
     case adPlayedDuration
     case ssai
     case playbackSpeed
+    case liveOffset
     public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
@@ -885,6 +898,7 @@ public enum SettingChangedReason : Swift.Int {
 extension KKSPaaS.PlayerViewController {
   @_Concurrency.MainActor(unsafe) public func play()
   @_Concurrency.MainActor(unsafe) public func pause()
+  @_Concurrency.MainActor(unsafe) public func stop()
   @_Concurrency.MainActor(unsafe) public func rewind()
   @_Concurrency.MainActor(unsafe) public func forward()
   @_Concurrency.MainActor(unsafe) public func playNextEpisode()
@@ -990,6 +1004,7 @@ extension KKSPaaS.KKSDownloader {
     get
   }
   @objc deinit
+  @_Concurrency.MainActor(unsafe) public init(withContext appLayerContext: KKSPaaS.AppLayerContext)
   @_Concurrency.MainActor(unsafe) public init(withVideo video: KKSPaaS.VideoModel? = nil, settingConfig: KKSPaaS.SettingConfig? = nil)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func willMove(toSuperview newSuperview: UIKit.UIView?)
 }
@@ -1092,7 +1107,8 @@ public struct SettingConfig {
   public var sourceType: Swift.String?
   public var shouldHideAutoPlay: Swift.Bool
   public var shouldHideVideoQuality: Swift.Bool
-  public init(resolution: Swift.Int? = nil, sourceType: Swift.String? = nil, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true)
+  public var preferencePlaybackRate: [Swift.Float]?
+  public init(resolution: Swift.Int? = nil, sourceType: Swift.String? = nil, shouldHideAutoPlay: Swift.Bool = true, shouldHideVideoQuality: Swift.Bool = true, preferencePlaybackRate: [Swift.Float]? = nil)
 }
 public enum SeekableOption : Swift.Equatable {
   case auto
@@ -1112,7 +1128,7 @@ public struct AppLayerContext {
   public var contentId: Swift.String
   public var licenseId: Swift.String?
   public let contentType: KKSPaaS.ItemType
-  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, apiVersion: Swift.String = "/v1", access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, enableRepeatWhileEndPlayback: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil, adTagParameters: [Swift.String : Swift.String]? = nil, videoDimension: CoreGraphics.CGSize? = nil, seekableOption: KKSPaaS.SeekableOption? = .auto)
+  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, apiVersion: Swift.String = "/v1", access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, enableRepeatWhileEndPlayback: Swift.Bool = false, isUsingBlaboNavBar: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil, adTagParameters: [Swift.String : Swift.String]? = nil, videoDimension: CoreGraphics.CGSize? = nil, seekableOption: KKSPaaS.SeekableOption? = .auto)
 }
 @_hasMissingDesignatedInitializers public class KKSDownloader {
   public static let shared: KKSPaaS.KKSDownloader
@@ -1297,7 +1313,6 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible, Swift.Case
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) public var isUsingBlaboNavBar: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var shouldAutoLoad: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var rotateToPortraitWhenDismiss: (Swift.Bool)
   @_Concurrency.MainActor(unsafe) public var shouldHideStatusBar: Swift.Bool {
@@ -1361,10 +1376,13 @@ extension KKSPaaS.PlayerViewController {
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func dismiss(animated flag: Swift.Bool = true, completion: (() -> Swift.Void)? = nil)
 }
 extension KKSPaaS.PlayerViewController {
+  @_Concurrency.MainActor(unsafe) public func set(appLayerContext: KKSPaaS.AppLayerContext)
   @_Concurrency.MainActor(unsafe) public func set(videoModel: KKSPaaS.VideoModel)
   @_Concurrency.MainActor(unsafe) public func changeContent(with id: Swift.String?)
   @_Concurrency.MainActor(unsafe) public func load()
   @_Concurrency.MainActor(unsafe) public func restart()
+  @_Concurrency.MainActor(unsafe) public func setPoster(url: Swift.String?)
+  @_Concurrency.MainActor(unsafe) public func showPoster(_ visible: Swift.Bool)
 }
 extension KKSPaaS.PlayerViewController {
   @_Concurrency.MainActor(unsafe) public func setupDAI(adsLoader: GoogleInteractiveMediaAds.IMAAdsLoader)
@@ -1461,6 +1479,7 @@ public class DownloadStream {
   public var item: KKSPaaS.DownloadSource
   public var playbackPosition: Swift.Float
   public var downloadProgress: Swift.Double
+  public var downloadedDate: Foundation.Date?
   public var seriesURLData: Foundation.Data?
   public var downloadState: KKSPaaS.DownloadState {
     get
@@ -1610,6 +1629,8 @@ public struct ForceHiddenConfig {
   public var nextEpisodeButton: Swift.Bool
   public var backButton: Swift.Bool
   public var seekBar: Swift.Bool
+  public var liveButton: Swift.Bool
+  public var bottomInfoContainer: Swift.Bool
 }
 public struct HLSDownloadManagerConfig {
   public var fairPlayServer: Swift.String
