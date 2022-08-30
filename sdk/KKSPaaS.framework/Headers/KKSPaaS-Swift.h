@@ -251,6 +251,15 @@ SWIFT_CLASS("_TtC7KKSPaaS19AudioSessionManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class NSCoder;
+
+SWIFT_CLASS("_TtC7KKSPaaS16BottomInfoButton")
+@interface BottomInfoButton : UIButton
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 
 @class NSEntityDescription;
@@ -395,7 +404,6 @@ SWIFT_CLASS("_TtC7KKSPaaS13KKSPlayerItem")
 
 @class UIViewController;
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC7KKSPaaS20NavigationController")
 @interface NavigationController : UINavigationController
@@ -482,12 +490,12 @@ SWIFT_CLASS("_TtC7KKSPaaS21SettingViewController")
 @end
 
 
-
 @class UIPresentationController;
 
 @interface SettingViewController (SWIFT_EXTENSION(KKSPaaS)) <UIAdaptivePresentationControllerDelegate>
 - (void)presentationControllerDidDismiss:(UIPresentationController * _Nonnull)presentationController;
 @end
+
 
 
 

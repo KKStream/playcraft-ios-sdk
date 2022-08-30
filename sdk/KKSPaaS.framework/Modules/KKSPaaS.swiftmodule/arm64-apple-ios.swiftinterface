@@ -173,6 +173,14 @@ extension AVFoundation.AVPlayerItem {
     get
   }
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BottomInfoButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers public class PLLogPitch {
   final public let createdDate: Foundation.Date
   final public let logSeverity: Swift.Int
@@ -1128,7 +1136,7 @@ public struct AppLayerContext {
   public var contentId: Swift.String
   public var licenseId: Swift.String?
   public let contentType: KKSPaaS.ItemType
-  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, apiVersion: Swift.String = "/v1", access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, enableRepeatWhileEndPlayback: Swift.Bool = false, isUsingBlaboNavBar: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil, adTagParameters: [Swift.String : Swift.String]? = nil, videoDimension: CoreGraphics.CGSize? = nil, seekableOption: KKSPaaS.SeekableOption? = .auto)
+  public init(contentId: Swift.String, contentType: KKSPaaS.ItemType, licenseId: Swift.String? = nil, host: Swift.String, apiVersion: Swift.String = "/v1", access token: Swift.String, custom header: [Swift.String : Swift.String] = [:], custom query: [Swift.String : Swift.String] = [:], settingConfig: KKSPaaS.SettingConfig, allowedThumbnailSeeking: Swift.Bool = false, allowedRecommend: Swift.Bool = false, enableRepeatWhileEndPlayback: Swift.Bool = false, isUsingBlaboNavBar: Swift.Bool = false, useExternalScreen: Swift.Bool = true, adVariablesData: Foundation.Data? = nil, adTagParameters: [Swift.String : Swift.String]? = nil, videoDimension: CoreGraphics.CGSize? = nil)
 }
 @_hasMissingDesignatedInitializers public class KKSDownloader {
   public static let shared: KKSPaaS.KKSDownloader
@@ -1352,6 +1360,10 @@ public enum PLLogSeverity : Swift.Int, Swift.CustomStringConvertible, Swift.Case
   @_Concurrency.MainActor(unsafe) public var contentKeyContextMode: KKSPaaS.ContentKeyContextMode
   @_Concurrency.MainActor(unsafe) public var settingItemShouldHideConfig: [Swift.String : Swift.Bool]
   @_Concurrency.MainActor(unsafe) public var forceButtonHiddenConfig: KKSPaaS.ForceHiddenConfig {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var infoButtons: [KKSPaaS.BottomInfoButton] {
     get
     set
   }
